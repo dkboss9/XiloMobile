@@ -202,19 +202,29 @@
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<title>Login</title>
 	<style>
-		#footer{
-			  background:#333333;
-			  color:#ffffff;
-			  text-align:center;
-			  padding:30px;
-			  margin-top:30px;
-			}
-		i{
-			font-size: 30px;
-			padding : 4px;
-			background-color: teal;
-		}
-		
+		body{
+      background-image: url('http://localhost/project/images/back.jpg');
+    }
+    b.designsignup {
+    background-color: orange;
+    border-radius: 8px;
+    font-family: none;
+    font-size: 40px;
+}
+strong.designlogin{
+  background-color: orange;
+    border-radius: 8px;
+    font-family: none;
+    font-size: 40px;
+}
+span.login {
+    background-color: orange;
+    width: 8px;
+    margin-left: -7px;
+}
+.loginform{
+  border:1px solid orange;
+}
 
 	</style>
 </head>
@@ -226,31 +236,25 @@
 
 	<div class="container">
 		<br>
-		<nav aria-label="breadcrumb">
-		  <ol class="breadcrumb">
-		    <li class="breadcrumb-item"><a href="#">Home</a></li>
-		    <li class="breadcrumb-item active" aria-current="page"><a href="login.php">Sign-in</a></li>
-
-	    </nav>
 		<div class="row">
 			<div class="col-md-8">
 				<div class="jumbotron jumbotron-fluid">
 				  <div class="container">
-				    <h1 style="text-align: center;" class="display-4"><b>Sign-up</b></h1>
+				    <h1 style="text-align: center;" class="display-4"><b class="designsignup">Sign-up</b></h1>
 				    <hr class="my-4">
 				    <form action="" method="post">
 				      <div class="form-row">
 					    
 					    <div class="col-md-12">
 					      <label for="name">Name</label>
-					      <input type="text" class="form-control" name="name"placeholder="Enter Name">
+					      <input type="text" class="form-control loginform" name="name"placeholder="Enter Name">
 					      <?php  if(isset($err['name']))
          						echo $err['name'];
      						?>
 					    </div>
 					    <div class="col-7">
 					      <label for="username">Username</label>
-					      <input type="text" class="form-control" name="username"placeholder="Enter username">
+					      <input type="text" class="form-control loginform" name="username"placeholder="Enter username">
 					      <?php  if(isset($err['username']))
          						echo $err['username'];
     						 ?>
@@ -265,14 +269,14 @@
 					    <div class="form-group col-md-6">
 					      <label for="inputPassword1">Password</label>
 					     
-					      <input type="password" class="form-control" name="password" placeholder="Enter Password">
+					      <input type="password" class="form-control loginform" name="password" placeholder="Enter Password">
 					      <?php  if(isset($err['password']))
         						 echo $err['password'];
      						?>
 					    </div>
 					    <div class="form-group col-md-6">
 					      <label for="inputPassword2">Confirm Password</label>
-					      <input type="password" class="form-control" name="repassword" placeholder="Confirm Password">
+					      <input type="password" class="form-control loginform" name="repassword" placeholder="Confirm Password">
 					       <?php  if(isset($err['repassword']))
          						echo $err['repassword'];
     						 ?>
@@ -282,7 +286,7 @@
 					      <label for="inputEmail4">Email</label>
 					      
 					      
-					      <input type="email" class="form-control" name="email" placeholder="Enter Email">
+					      <input type="email" class="form-control loginform" name="email" placeholder="Enter Email">
 					      <?php  if(isset($err['email']))
         						 echo $err['email'];
      						?>
@@ -293,13 +297,13 @@
 						      <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
 						      <div class="col-sm-10">
 						        <div class="form-check">
-						          <input class="form-check-input" type="radio" name="gender" value="Male" checked>
+						          <input class="form-check-input loginform" type="radio" name="gender" value="Male" checked>
 						          <label class="form-check-label" for="gridRadios1">
 						            Male
 						          </label>
 						        </div>
 						        <div class="form-check">
-						          <input class="form-check-input" type="radio" name="gender"  value="Female">
+						          <input class="form-check-input loginform" type="radio" name="gender"  value="Female">
 						          <label class="form-check-label" for="gridRadios2">
 						            Female
 						            <?php  if(isset($err['gender']))
@@ -315,14 +319,14 @@
 						  <div class="form-group col-md-12">
 						  	
 						    <label for="inputAddress">Address</label>
-						    <input type="text" class="form-control" name="address" placeholder="Enter address">
+						    <input type="text" class="form-control loginform" name="address" placeholder="Enter address">
 						    <?php  if(isset($err['address']))
         						 echo $err['address'];
     							 ?>
 						  </div>
 						  <div class="form-group col-7">
 						    <label for="phone">Phone No</label>
-						    <input type="text" class="form-control" name="phonenumber" placeholder="Example 98********">
+						    <input type="text" class="form-control loginform" name="phonenumber" placeholder="Example 98********">
 						    <?php  if(isset($err['phonenumber']))
         						 echo $err['phonenumber'];
      							?>
@@ -330,7 +334,7 @@
 					    </div>
 					  
 					  <br>
-					  <button type="submit" class="btn btn-primary" name="sign">Sign Up</button>
+					  <button type="submit" class="btn btn-primary" name="sign" style="border-radius: 10px; background-color: orange; color: white;">Sign Up</button>
 					</form>
 				 </div>
 			    </div>
@@ -338,7 +342,7 @@
 
 			<div class="col-md-4">
 				<div class="jumbotron">
-				  <h1 style="text-align: center;" class="display-4"><strong>Login</strong></h1>
+				  <h1 style="text-align: center;" class="display-4"><strong class="designlogin">Login</strong></h1>
 				  <hr>
 
 
@@ -362,7 +366,7 @@
 				  </div>
 				  <br>
 				  <div class="input-group">
-				    <span>
+				    <span class="login">
 				    	<i class="fas fa-key"></i>
 				    </span>
 				    Password
@@ -375,7 +379,7 @@
 				  
 				  <hr class="my-4">
 				  <div class="col-md-12" >
-                        <input type="submit" class="btn btn-block"  name="signup" value="Login"  style="border-radius: 10px; background-color: teal; color: white;">
+                        <input type="submit" class="btn btn-block"  name="signup" value="Login"  style="border-radius: 10px; background-color: orange; color: white;">
                   </div> 
 				  
 				</form>

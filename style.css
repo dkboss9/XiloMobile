@@ -59,11 +59,10 @@ body
 {
 	color: #fff;
 }
-.menu-bar
-{
-	width: 40%;
-	height: 50%;
-	float: right;
+.menu-bar {
+    /*width: 39%;*/
+    height: 50%;
+    float: right;
 }
 .menu-bar ul
 {
@@ -82,7 +81,7 @@ body
 }
 .menu-bar li a
 {
-	font-size: 16px;
+	font-size: 14px;
 	font-weight: bold;
 	color: #fff;
 	text-decoration: none;
@@ -213,3 +212,7 @@ i.fa.fa-star-half-o.starcolor {
     transform: translateY(0);
 }
 
+.img{
+	max-width: 100%;
+    height: 176px;
+}
