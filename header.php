@@ -29,7 +29,7 @@
 				      </div>
 					</li><?php 
 					}else{ ?>
-						<li><a href="home.php"><i class="fa fa-home"></i>HOME</a></li>
+						<li><a href="login.php"></i>Login</a></li>
 						<?php
 					} ?>
 
