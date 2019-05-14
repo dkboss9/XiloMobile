@@ -1,3 +1,5 @@
+
+
 <!-- Begin of Top Nav Bar -->
 <div class="top-nav-bar">
 	<div class="search-box">
@@ -14,10 +16,13 @@
 
 		  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 				<ul>
-					<li><a href="home.php"><i class="fa fa-home"></i>HOME</a></li>
+					<li><a href="home.php"><i class="fa fa-home"></i> HOME</a></li>
 					<?php 
-						if (isset($_SESSION['username'])){
-					?>
+						if (empty($_SESSION['username']))
+						{ ?>
+							<li><a href="login.php"> Login</a></li>
+					<?php	} else {
+					 ?>
 					<li class="nav-item dropdown dmenu">
 						<i class="fa fa-user usermanage"></i>
 				      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
@@ -27,15 +32,11 @@
 				        <a class="dropdown-item" href="edit.php">Edit Profile</a>
 				        <a class="dropdown-item" href="logout.php">Logout</a>
 				      </div>
-					</li><?php 
-					}else{ ?>
-						<li><a href="login.php"></i>Login</a></li>
-						<?php
-					} ?>
-
+					</li>
+					<?php } ?>	
 					<li><a href="#"><i class="fa fa-shopping-basket"></i>CART</a></li>
 					<li><a href="#">ABOUT US</a></li>
-					<li><a href="#"><i class="fa fa-phone"></i>CONTACT</a></li>
+					<li><a href="#"><i class="fa fa-phone-square" aria-hidden="true"></i> CONTACT</a></li>
 				</ul>
 		<style>
 
@@ -68,9 +69,6 @@
 				    background-color: #468184;
 				    min-width: 146px;
 				}
-		
-
-	</style>
 			
 		</style>
 	</div>

@@ -119,6 +119,7 @@ require_once "connect.php";
       if (mysqli_affected_rows($conn)==1) {
 
       echo "User update successfully";
+      header("location:home.php");
     }else{
 
       echo"user update failed";
@@ -136,6 +137,12 @@ require_once "connect.php";
   <link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.min.css">
   <link href="fontawesome/css/all.css" rel="stylesheet">
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css ">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  
   <title>Login</title>
   <style>
     body{
@@ -167,7 +174,9 @@ span.login {
 <body>
 
   
-<?php include "header.php" ?>
+<?php include "header.php"
+
+ ?>
 
 
   <div class="container">
@@ -176,21 +185,21 @@ span.login {
       <div class="col-md-8">
         <div class="jumbotron jumbotron-fluid">
           <div class="container">
-            <h1 style="text-align: center;" class="display-4"><b class="designsignup">Sign-up</b></h1>
+            <h1 style="text-align: center;" class="display-4"><b class="designsignup">Edit Profile</b></h1>
             <hr class="my-4">
             <form action="" method="post">
               <div class="form-row">
               
               <div class="col-md-12">
                 <label for="name">Name</label>
-                <input type="text" class="form-control loginform" name="name"placeholder="Enter Name">
+                <input type="text" class="form-control loginform" name="name"autocomplete="off" value="<?php echo $data['name'];?>">
                 <?php  if(isset($err['name']))
                     echo $err['name'];
                 ?>
               </div>
               <div class="col-7">
                 <label for="username">Username</label>
-                <input type="text" class="form-control loginform" name="username"placeholder="Enter username">
+                <input type="text" class="form-control loginform" name="username" autocomplete="off" value="<?php echo $data['username'];?>">
                 <?php  if(isset($err['username']))
                     echo $err['username'];
                  ?>
@@ -222,7 +231,7 @@ span.login {
                 <label for="inputEmail4">Email</label>
                 
                 
-                <input type="email" class="form-control loginform" name="email" placeholder="Enter Email">
+                <input type="email" class="form-control loginform" name="email" utocomplete="off" value="<?php echo $data['email'];?>">
                 <?php  if(isset($err['email']))
                      echo $err['email'];
                 ?>
@@ -255,14 +264,14 @@ span.login {
               <div class="form-group col-md-12">
                 
                 <label for="inputAddress">Address</label>
-                <input type="text" class="form-control loginform" name="address" placeholder="Enter address">
+                <input type="text" class="form-control loginform" name="address" autocomplete="off" value="<?php echo $data['address'];?>">
                 <?php  if(isset($err['address']))
                      echo $err['address'];
                    ?>
               </div>
               <div class="form-group col-7">
                 <label for="phone">Phone No</label>
-                <input type="text" class="form-control loginform" name="phonenumber" placeholder="Example 98********">
+                <input type="text" class="form-control loginform" name="phonenumber" autocomplete="off" value="<?php echo $data['phone'];?>">
                 <?php  if(isset($err['phonenumber']))
                      echo $err['phonenumber'];
                   ?>
@@ -270,7 +279,7 @@ span.login {
               </div>
             
             <br>
-            <button type="submit" class="btn btn-primary" name="sign" style="border-radius: 10px; background-color: orange; color: white;">Sign Up</button>
+            <button type="submit" class="btn btn-primary" name="sign" style="border-radius: 10px; background-color: orange; color: white;">Update</button>
           </form>
          </div>
           </div>

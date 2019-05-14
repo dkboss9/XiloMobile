@@ -1,5 +1,21 @@
+<?php 
+  session_start();
+  if(isset($_SESSION["username"]))
+  {
+    header("location:home.php");
+  }
+  if(isset($_SESSION['url']))
+  {
+  $url= $_SESSION['url'];
+  }
+    else
+    {
+      $url="home.php";
+    }
+
+?>
+
 <?php
-  
   
   if (isset($_POST['signup']))
 {
@@ -44,7 +60,7 @@
       $_SESSION['id']=$id;
         setcookie('username',$username,time()+7*24*60*60);
         setcookie('id',$id,time()+7*24*60*60);
-      header('location:home.php');
+      header('location:'.$url);
     }else{
       $fail= 'Username or Password mistake. Login Failed!!!';
     }
@@ -177,12 +193,12 @@
       if (mysqli_insert_id($conn)>0) {
 
       
-      session_start();
+   
       $_SESSION['username']=$username;
       $_SESSION['id']=$id;
         setcookie('username',$username,time()+7*24*60*60);
         setcookie('id',$id,time()+7*24*60*60);
-      header("location:home.php");
+       header('location:'.$url);
     }else{
 
       echo"user creation failed";

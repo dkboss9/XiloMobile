@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-session_destroy();
+unset($_SESSION["username"]);
 setcookie('username',null,time()-1);
 header("location:login.php");
 ?>

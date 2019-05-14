@@ -1,6 +1,7 @@
 <?php 
 
 	session_start();
+	$_SESSION['url']=$_SERVER['REQUEST_URI'];
 
 ?>
 
@@ -39,7 +40,7 @@ $mobileId=$_GET["mobileId"];
 <div class="col-md-3">
 <div class="product-top">
 <div class="productdesign">
-<a href="" class="imghover">
+	<a href="display.php?productID=<?php echo $d['p_id'] ?>";>
 <?php
                             echo '<img src="data:images/jpeg;base64,'.base64_encode($d['image']).'"height ="300" width="300">';
                           ?>
@@ -47,7 +48,7 @@ $mobileId=$_GET["mobileId"];
 </div>
 <div class="row">
 <div class="col quickview">
-<h1 class="btn btn-secondary buttonquick">See Details</h1>
+<h1 class="btn btn-secondary buttonquick"><a href="display.php?productID=<?php echo $d['p_id'] ?>"> See Details</a></h1>
 </div>
 <div class="col addcart">
 <h1 class="btn btn-secondary buttonquick">Add Cart</h1>

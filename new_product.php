@@ -150,8 +150,9 @@
 	}
 		if($gender=="oppo")
 	{
-		$sql="insert into tbl_oppo(image,mobilename,price,camera,processor,ram,rom,version,size,color,battery,description,created_by,created_date) values ('$tmpname','$mobilename','$price','$camera','$processor','$ram','$rom','$version','$size','$color','$battery','$description','$admin','$date')";
+		$sql="insert into tbl_product(image,mobilename,price,camera,processor,ram,rom,version,size,color,battery,description,c_id,a_id,created_by,created_date) values ('$tmpname','$mobilename','$price','$camera','$processor','$ram','$rom','$version','$size','$color','$battery','$description','4','1','$admin','$date')";
 		mysqli_query($conn,$sql);
+		
 		if (mysqli_insert_id($conn)>0) {
 			echo "Product inserted sucessfully";
 			
@@ -162,8 +163,9 @@
 }
 	if($gender=="nokia")
 	{
-		$sql="insert into tbl_nokia(image,mobilename,price,camera,processor,ram,rom,version,size,color,battery,description,created_by,created_date) values ('$tmpname','$mobilename','$price','$camera','$processor','$ram','$rom','$version','$size','$color','$battery','$description','$admin','$date')";
+		$sql="insert into tbl_product(image,mobilename,price,camera,processor,ram,rom,version,size,color,battery,description,c_id,a_id,created_by,created_date) values ('$tmpname','$mobilename','$price','$camera','$processor','$ram','$rom','$version','$size','$color','$battery','$description','2','1','$admin','$date')";
 		mysqli_query($conn,$sql);
+		
 		if (mysqli_insert_id($conn)>0) {
 			echo "Product inserted sucessfully";
 			
@@ -173,23 +175,24 @@
 	}
 		if($gender=="vivo")
 	{
-		$sql="insert into tbl_vivo(image,mobilename,price,camera,processor,ram,rom,version,size,color,battery,description,created_by,created_date) values ('$tmpname','$mobilename','$price','$camera','$processor','$ram','$rom','$version','$size','$color','$battery','$description','$admin','$date')";
+		$sql="insert into tbl_product(image,mobilename,price,camera,processor,ram,rom,version,size,color,battery,description,c_id,a_id,created_by,created_date) values ('$tmpname','$mobilename','$price','$camera','$processor','$ram','$rom','$version','$size','$color','$battery','$description','5','1','$admin','$date')";
 		mysqli_query($conn,$sql);
+		
 		if (mysqli_insert_id($conn)>0) {
 			echo "Product inserted sucessfully";
+			
 		}else{
 			echo"Product insert failed";
 		}
 	}
 		if($gender=="oneplus")
-	{
-		$sql="insert into tbl_oneplus(image,mobilename,price,camera,processor,ram,rom,version,size,color,battery,description,created_by,created_date) values ('$tmpname','$mobilename','$price','$camera','$processor','$ram','$rom','$version','$size','$color','$battery','$description','$admin','$date')";
+	{$sql="insert into tbl_product(image,mobilename,price,camera,processor,ram,rom,version,size,color,battery,description,c_id,a_id,created_by,created_date) values ('$tmpname','$mobilename','$price','$camera','$processor','$ram','$rom','$version','$size','$color','$battery','$description','5','1','$admin','$date')";
 		mysqli_query($conn,$sql);
+		
 		if (mysqli_insert_id($conn)>0) {
 			echo "Product inserted sucessfully";
 			
-		}else
-		{
+		}else{
 			echo"Product insert failed";
 		}
 		}
