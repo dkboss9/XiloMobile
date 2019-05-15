@@ -17,6 +17,8 @@
 		  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 				<ul>
 					<li><a href="home.php"><i class="fa fa-home"></i> HOME</a></li>
+					<li><a href="mostviewDisplay.php">Most View</a></li>
+					<li><a href="#"><i class="fa fa-shopping-basket"></i>CART</a></li>
 					<?php 
 						if (empty($_SESSION['username']))
 						{ ?>
@@ -34,8 +36,6 @@
 				      </div>
 					</li>
 					<?php } ?>	
-					<li><a href="#"><i class="fa fa-shopping-basket"></i>CART</a></li>
-					<li><a href="#">ABOUT US</a></li>
 					<li><a href="#"><i class="fa fa-phone-square" aria-hidden="true"></i> CONTACT</a></li>
 				</ul>
 		<style>
