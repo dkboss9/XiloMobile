@@ -12,8 +12,6 @@
 	<title>Xilo Mobile Hub E-commerce Site</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css ">
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	
 </head>
@@ -62,7 +60,7 @@ $mobileId=$_GET["mobileId"];
 <i class="fa fa-star starcolor"></i>
 <i class="fa fa-star-half-o starcolor"></i>
 	<h3><?php echo $d['mobilename']; ?></h3>
-<h5>Rs.Rs <?php echo $d['price']; ?></h5>
+<h5>Rs. <?php echo $d['price']; ?></h5>
 </div>
 </div>
 
