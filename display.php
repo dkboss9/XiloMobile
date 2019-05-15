@@ -1,19 +1,22 @@
 <?php 
-
+	require_once"connect.php";
 	session_start();
 	$productId=$_GET['productID'];
  	$_SESSION['url']=$_SERVER['REQUEST_URI'];
- 	$id=$_SESSION['id'];
+ 	$sqli ="update tbl_product set views=views + 1 where p_id='$productId'";
 
+      mysqli_query($conn,$sqli);
+ 	if(!empty($_SESSION['id'])){
+ 	$id=$_SESSION['id'];
+ }
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
 		<title>Xilo Mobile Hub E-commerce Site</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css ">
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<style>
 			.single-product
@@ -71,11 +74,12 @@
 				box-shadow: none !important;
 				}
 		</style>
+		
 	</head>
 	<body>
 <?php
 	include "header.php";
-	require_once"connect.php";
+	
 
     $selectsql="select * from tbl_product where p_id=$productId ";
     $result=mysqli_query($conn,$selectsql);
@@ -109,7 +113,21 @@
 						<h2><?php echo $d['mobilename']; ?></h2>
 						
 						<p class="price">Rs. <?php echo $d['price']; ?></p>
-						<p ><b>Views:</b> <?php echo $d['price'];?> &nbsp &nbsp &nbsp &nbsp &nbsp<b> Average Rating </b><?php echo $d['price']; ?></p>
+						<p ><b>Views: </b> <?php echo $d['views'];?> &nbsp &nbsp &nbsp &nbsp &nbsp<b> Average Rating: </b><?php
+							$sqll="select AVG(rating) avg from tbl_rating where p_id='$productId'";
+							$result=mysqli_query($conn,$sqll);
+							while($dd=mysqli_fetch_array($result))
+							{
+								if(!empty($dd['avg']))
+								{
+									echo round( $dd['avg'], 1, PHP_ROUND_HALF_UP); ?>
+									<i class="fa fa-star starcolor"></i>
+							<?php
+								}else{
+									echo "N/A";
+								}
+							}
+						 ?></p>
 						<p><b>Camera:</b><?php echo $d["camera"];?></p>
 						<p><b>Processor:</b><?php echo $d["processor"];?></p>
 						<p><b>RAM/ROM:</b> <?php echo $d["ram"];?>/ <?php echo $d["rom"];?></p>
@@ -127,11 +145,11 @@
 								if(isset($_SESSION['username']))
 									{ 
 										require_once "connect.php";
-    									$sql = "select r_id from tbl_rating where p_id='$productId' and id = '$id'";
+    									$sql = "select r_id,rating from tbl_rating where p_id='$productId' and id = '$id'";
     									$result = mysqli_query($conn,$sql);
-    									$data=mysqli_fetch_assoc($result);
+    									$data=mysqli_fetch_array($result);
     									if(mysqli_num_rows($result)==1){ ?>
-    										<br><p><b> You already rated this Product</b></p>
+    										<br><p><b> You gave <?php echo $data['rating'] ?> <i class="fa fa-star starcolor"></i> to  this Product</b></p>
     										<?php
     										 } else {
 
@@ -209,117 +227,31 @@
 					</div>
 				</div>
 	</section>
-
+<?php } ?>
 		<!--Begin User Comment -->
+		
 		<section class="comment">
 			<div class="container">
 				<h6>Comments</h6>
-				<textarea rows="4" cols="50">
+				<?php
+    		//Checking whether user has login or not. If not Hiding Comment box from him 
+			if(isset($_SESSION['username']))
+			{
+			
+			
+		?>
+		<form action="" method="post">
+				
+				<textarea rows="4" cols="50" id="comment">
 			
 				</textarea>
-				<button type="button" class="btn btn-submit">Submit</button>
-			</div>
+				<input type="submit" class="btn btn-submit" id="submit" >
+		</form>
+		</div>
 		</section>
-	<?php } ?>
+	<?php  }
+	include "footer.php";
 
-		<!-- Footer-->
-		<section class="footer">
-			<footer class="section footer-classic context-dark bg-image" style="background: #2d3246;">
-        <div class="container">
-          <div class="row row-30">
-            <div class="col-md-4 col-xl-5">
-              <div class="pr-xl-4"><a class="brand" href="index.html"><img class="brand-logo-light" src="images/agency/logo-inverse-140x37.png" alt="" width="140" height="37" srcset="images/agency/logo-retina-inverse-280x74.png 2x"></a>
-                <p>We deliver products that we believe..</p>
-                <!-- Rights-->
-                <p class="rights"><span>©  </span><span class="copyright-year">2018</span><span> </span><span>Waves</span><span>. </span><span>All Rights Reserved.</span></p>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <h5>Contacts</h5>
-              <dl class="contact-list">
-                <dt>Address:</dt>
-                <dd>Tikathali,Lalitpur</dd>
-              </dl>
-              <dl class="contact-list">
-                <dt>email:</dt>
-                <dd><a href="mailto:#">maharjanruchan@gmail.com</a></dd>
-              </dl>
-              <dl class="contact-list">
-                <dt>phones:</dt>
-                <dd><a href="tel:#">9868017555</a> <span>or</span> <a href="tel:#">9822546748</a>
-                </dd>
-              </dl>
-            </div>
-            <div class="col-md-4 col-xl-3">
-              <h5>Quick Links</h5>
-              <ul class="nav-list">
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contacts</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="row no-gutters social-container">
-          <div class="col"><a class="social-inner" href="https://www.facebook.com/ruchan.maharjan"><span class="icon mdi mdi-facebook"></span><span>Facebook</span></a></div>
-          <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-instagram"></span><span>instagram</span></a></div>
-          <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-twitter"></span><span>twitter</span></a></div>
-          <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-youtube-play"></span><span>google</span></a></div>
-        </div>
-      </footer>
-      <style>
-      .context-dark, .bg-gray-dark, .bg-primary {
-    color: rgba(255, 255, 255, 0.8);
-}
+	?>
 
-.footer-classic a, .footer-classic a:focus, .footer-classic a:active {
-    color: #ffffff;
-}
-.nav-list li {
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-
-.nav-list li a:hover:before {
-    margin-left: 0;
-    opacity: 1;
-    visibility: visible;
-}
-
-ul, ol {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.social-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding: 23px;
-    font: 900 13px/1 "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.5);
-}
-.social-container .col {
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-.nav-list li a:before {
-    content: "\f14f";
-    font: 400 21px/1 "Material Design Icons";
-    color: #4d6de6;
-    display: inline-block;
-    vertical-align: baseline;
-    margin-left: -28px;
-    margin-right: 7px;
-    opacity: 0;
-    visibility: hidden;
-    transition: .22s ease;
-}
-      </style>
-				</section>
-				<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-				<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-				<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-			</body>
-		</html>
+		
