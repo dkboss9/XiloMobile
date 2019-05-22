@@ -213,17 +213,17 @@
 <html>
 <head>
 
-	<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.min.css">
-	<link href="fontawesome/css/all.css" rel="stylesheet">
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.min.css">
+  <link href="fontawesome/css/all.css" rel="stylesheet">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css ">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="style.css">
-	<title>Login</title>
-	<style>
-		body{
+  <title>Login</title>
+  <style>
+    body{
       background-image: url('http://localhost/project/images/back.jpg');
     }
     b.designsignup {
@@ -247,170 +247,190 @@ span.login {
   border:1px solid orange;
 }
 
-	</style>
+h1.display-4{
+    background:orange;
+    width: 156px;
+    margin-left: 37%;
+    border-radius: 0px;
+    font-family: none;
+    font-size: 30px;
+    box-shadow: 2px 5px lavenderblush;
+}
+.formloginform
+{
+   width: 100%;
+  padding: 14px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: orange;
+  background-color: white;
+  border:1px solid orange;
+}
+
+
+  </style>
 </head>
 <body>
 <?php include "header.php"; ?>
-	
+  
 
 
 
-	<div class="container">
-		<br>
-		<div class="row">
-			<div class="col-md-8">
-				<div class="jumbotron jumbotron-fluid">
-				  <div class="container">
-				    <h1 style="text-align: center;" class="display-4"><b class="designsignup">Sign-up</b></h1>
-				    <hr class="my-4">
-				    <form action="" method="post">
-				      <div class="form-row">
-					    
-					    <div class="col-md-12">
-					      <label for="name">Name</label>
-					      <input type="text" class="form-control loginform" name="name"placeholder="Enter Name">
-					      <?php  if(isset($err['name']))
-         						echo $err['name'];
-     						?>
-					    </div>
-					    <div class="col-7">
-					      <label for="username">Username</label>
-					      <input type="text" class="form-control loginform" name="username"placeholder="Enter username">
-					      <?php  if(isset($err['username']))
-         						echo $err['username'];
-    						 ?>
-					    </div>
-					    
-					  </div>
-					  <div class="form-row">
-					  	
+  <div class="container">
+    <br>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+            <h1 style="text-align: center;" class="display-4"><b class="designsignup">Sign-up</b></h1>
+            <hr class="my-4">
+            <form action="" method="post">
+              <div class="form-row">
+              
+              <div class="col-md-12">
+                <label for="name">Name</label>
+                <input type="text" class="formloginform" name="name"placeholder="Enter Name">
+                <?php  if(isset($err['name']))
+                    echo $err['name'];
+                ?>
+              </div>
+              <div class="col-md-7">
+                <label for="username">Username</label>
+                <input type="text" class="formloginform" name="username"placeholder="Enter username">
+                <?php  if(isset($err['username']))
+                    echo $err['username'];
+                 ?>
+              </div>
+              
+            </div>
+            <div class="form-row">
+              
 
 
-					    
-					    <div class="form-group col-md-6">
-					      <label for="inputPassword1">Password</label>
-					     
-					      <input type="password" class="form-control loginform" name="password" placeholder="Enter Password">
-					      <?php  if(isset($err['password']))
-        						 echo $err['password'];
-     						?>
-					    </div>
-					    <div class="form-group col-md-6">
-					      <label for="inputPassword2">Confirm Password</label>
-					      <input type="password" class="form-control loginform" name="repassword" placeholder="Confirm Password">
-					       <?php  if(isset($err['repassword']))
-         						echo $err['repassword'];
-    						 ?>
-					    </div>
-					  </div>
-					  <div class="form-group col-md-12">
-					      <label for="inputEmail4">Email</label>
-					      
-					      
-					      <input type="email" class="form-control loginform" name="email" placeholder="Enter Email">
-					      <?php  if(isset($err['email']))
-        						 echo $err['email'];
-     						?>
-					    </div>
+              
+              <div class="form-group col-md-6">
+                <label for="inputPassword1">Password</label>
+               
+                <input type="password" class="formloginform" name="password" placeholder="Enter Password">
+                <?php  if(isset($err['password']))
+                     echo $err['password'];
+                ?>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputPassword2">Confirm Password</label>
+                <input type="password" class="formloginform" name="repassword" placeholder="Confirm Password">
+                 <?php  if(isset($err['repassword']))
+                    echo $err['repassword'];
+                 ?>
+              </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label for="inputEmail4">Email</label>
+                
+                
+                <input type="email" class="formloginform" name="email" placeholder="Enter Email">
+                <?php  if(isset($err['email']))
+                     echo $err['email'];
+                ?>
+              </div>
 
-					  <fieldset class="form-group">
-						    <div class="row">
-						      <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
-						      <div class="col-sm-10">
-						        <div class="form-check">
-						          <input class="form-check-input loginform" type="radio" name="gender" value="Male" checked>
-						          <label class="form-check-label" for="gridRadios1">
-						            Male
-						          </label>
-						        </div>
-						        <div class="form-check">
-						          <input class="form-check-input loginform" type="radio" name="gender"  value="Female">
-						          <label class="form-check-label" for="gridRadios2">
-						            Female
-						            <?php  if(isset($err['gender']))
-         									echo $err['gender'];
-    								 ?>
-						          </label>
-						        </div>
-						        
-						      </div>
-						    </div>
-					  </fieldset>
-					  <div class="form-row">
-						  <div class="form-group col-md-12">
-						  	
-						    <label for="inputAddress">Address</label>
-						    <input type="text" class="form-control loginform" name="address" placeholder="Enter address">
-						    <?php  if(isset($err['address']))
-        						 echo $err['address'];
-    							 ?>
-						  </div>
-						  <div class="form-group col-7">
-						    <label for="phone">Phone No</label>
-						    <input type="text" class="form-control loginform" name="phonenumber" placeholder="Example 98********">
-						    <?php  if(isset($err['phonenumber']))
-        						 echo $err['phonenumber'];
-     							?>
-						  </div>
-					    </div>
-					  
-					  <br>
-					  <button type="submit" class="btn btn-primary" name="sign" style="border-radius: 10px; background-color: orange; color: white;">Sign Up</button>
-					</form>
-				 </div>
-			    </div>
-			</div>
+            <fieldset class="form-group">
+                <div class="row">
+                  <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
+                  <div class="col-sm-10">
+                    <div class="form-check">
+                      <input class="form-check-input loginform" type="radio" name="gender" value="Male" checked>
+                      <label class="form-check-label" for="gridRadios1">
+                        Male
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input loginform" type="radio" name="gender"  value="Female">
+                      <label class="form-check-label" for="gridRadios2">
+                        Female
+                        <?php  if(isset($err['gender']))
+                          echo $err['gender'];
+                     ?>
+                      </label>
+                    </div>
+                    
+                  </div>
+                </div>
+            </fieldset>
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                
+                <label for="inputAddress">Address</label>
+                <input type="text" class="formloginform" name="address" placeholder="Enter address">
+                <?php  if(isset($err['address']))
+                     echo $err['address'];
+                   ?>
+              </div>
+              <div class="form-group col-7">
+                <label for="phone">Phone No</label>
+                <input type="text" class="formloginform" name="phonenumber" placeholder="Example 98********">
+                <?php  if(isset($err['phonenumber']))
+                     echo $err['phonenumber'];
+                  ?>
+              </div>
+              </div>
+            
+            <br>
+            <button type="submit" class="btn btn-primary" name="sign" style="border-radius: 10px; background-color: orange; color: white;">Sign Up</button>
+          </form>
+         </div>
+          </div>
+      </div>
 
-			<div class="col-md-4">
-				<div class="jumbotron">
-				  <h1 style="text-align: center;" class="display-4"><strong class="designlogin">Login</strong></h1>
-				  <hr>
+      <div class="col-md-4">
+        <div class="jumbotron">
+          <h1 style="text-align: center;" class="display-4"><strong class="designlogin">Login</strong></h1>
+          <hr>
 
 
 
-				  <!---LOGIN FORM-->
-				  <form action="" method="post" >
-				  <div class="input-group">
-				     <?php if(isset($fail))
-               		 {
-                  		echo $fail;
-                	} ?>
-				    <span class="login">
-                      <i class="fa fa-envelope" for="username"></i>
+          <!---LOGIN FORM-->
+          <form action="" method="post" >
+          <div class="input-group">
+             <?php if(isset($fail))
+                   {
+                      echo $fail;
+                  } ?>
+            <span class="login">
                    </span>
                    Username
-				    <input name="username" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Username">
-				   
-                	<?php  if(isset($errs['username']))
-                  		echo $errs['username']
-               		 ?>
-				  </div>
-				  <br>
-				  <div class="input-group">
-				    <span class="login">
-				    	<i class="fas fa-key"></i>
-				    </span>
-				    Password
-				    <input name="password" type="password" class="form-control"  placeholder=" Enter Password">
-				     <?php  if(isset($errs['password']))
-                  			echo $errs['password']
-                		?>
-				  </div>
-				  <br>
-				  
-				  <hr class="my-4">
-				  <div class="col-md-12" >
+            <input name="username" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Username">
+           
+                  <?php  if(isset($errs['username']))
+                      echo $errs['username']
+                   ?>
+          </div>
+          <br>
+          <div class="input-group">
+            <span class="login">
+            </span>
+            Password
+            <input name="password" type="password" class="form-control"  placeholder=" Enter Password">
+             <?php  if(isset($errs['password']))
+                        echo $errs['password']
+                    ?>
+          </div>
+          <br>
+          
+          <hr class="my-4">
+          <div class="col-md-12" >
                         <input type="submit" class="btn btn-block"  name="signup" value="Login"  style="border-radius: 10px; background-color: orange; color: white;">
                   </div> 
-				  
-				</form>
-				</div>
-				
-			</div>
-		</div>
-	</div>
-	
-	
+          
+        </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+  
     <script src="js/validate.js"></script>
     <script src="bootstrap/assets/js/vendor/jquery-slim.min.js"></script>
     <script src="bootstrap/assets/js/vendor/popper.min.js"></script>

@@ -154,20 +154,35 @@ require_once "connect.php";
     font-family: none;
     font-size: 40px;
 }
-strong.designlogin{
-  background-color: orange;
-    border-radius: 8px;
+h1.display-4{
+    background:orange;
+    width: 200px;
+    margin-left: 37%;
+    border-radius: 0px;
     font-family: none;
-    font-size: 40px;
+    font-size: 30px;
+    box-shadow: 2px 5px lavenderblush;
 }
-span.login {
-    background-color: orange;
-    width: 8px;
-    margin-left: -7px;
-}
-.loginform{
+.formloginform
+{
+   width: 100%;
+  padding: 14px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: orange;
+  background-color: white;
   border:1px solid orange;
 }
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -130px;
+    margin-left: 130px;
+}
+
 
   </style>
 </head>
@@ -192,14 +207,14 @@ span.login {
               
               <div class="col-md-12">
                 <label for="name">Name</label>
-                <input type="text" class="form-control loginform" name="name"autocomplete="off" value="<?php echo $data['name'];?>">
+                <input type="text" class="formloginform" name="name"autocomplete="off" value="<?php echo $data['name'];?>">
                 <?php  if(isset($err['name']))
                     echo $err['name'];
                 ?>
               </div>
               <div class="col-7">
                 <label for="username">Username</label>
-                <input type="text" class="form-control loginform" name="username" autocomplete="off" value="<?php echo $data['username'];?>">
+                <input type="text" class="formloginform" name="username" autocomplete="off" value="<?php echo $data['username'];?>">
                 <?php  if(isset($err['username']))
                     echo $err['username'];
                  ?>
@@ -214,14 +229,14 @@ span.login {
               <div class="form-group col-md-6">
                 <label for="inputPassword1">Password</label>
                
-                <input type="password" class="form-control loginform" name="password" placeholder="Enter Password">
+                <input type="password" class="formloginform" name="password" placeholder="Enter Password">
                 <?php  if(isset($err['password']))
                      echo $err['password'];
                 ?>
               </div>
               <div class="form-group col-md-6">
                 <label for="inputPassword2">Confirm Password</label>
-                <input type="password" class="form-control loginform" name="repassword" placeholder="Confirm Password">
+                <input type="password" class="formloginform" name="repassword" placeholder="Confirm Password">
                  <?php  if(isset($err['repassword']))
                     echo $err['repassword'];
                  ?>
@@ -231,7 +246,7 @@ span.login {
                 <label for="inputEmail4">Email</label>
                 
                 
-                <input type="email" class="form-control loginform" name="email" utocomplete="off" value="<?php echo $data['email'];?>">
+                <input type="email" class="formloginform" name="email" utocomplete="off" value="<?php echo $data['email'];?>">
                 <?php  if(isset($err['email']))
                      echo $err['email'];
                 ?>
@@ -264,14 +279,14 @@ span.login {
               <div class="form-group col-md-12">
                 
                 <label for="inputAddress">Address</label>
-                <input type="text" class="form-control loginform" name="address" autocomplete="off" value="<?php echo $data['address'];?>">
+                <input type="text" class="formloginform" name="address" autocomplete="off" value="<?php echo $data['address'];?>">
                 <?php  if(isset($err['address']))
                      echo $err['address'];
                    ?>
               </div>
               <div class="form-group col-7">
                 <label for="phone">Phone No</label>
-                <input type="text" class="form-control loginform" name="phonenumber" autocomplete="off" value="<?php echo $data['phone'];?>">
+                <input type="text" class="formloginform" name="phonenumber" autocomplete="off" value="<?php echo $data['phone'];?>">
                 <?php  if(isset($err['phonenumber']))
                      echo $err['phonenumber'];
                   ?>

@@ -9,9 +9,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+	.categorydesign
+	{
+		text-decoration: none;
+    	color: white;
+	}
+	.categorydesign:hover
+	{
+		text-decoration: none;
+    	color: red;
+	}
+</style>
 	<title>Xilo Mobile Hub E-commerce Site</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css ">
+	
 	<link rel="stylesheet" type="text/css" href="style.css">
 	
 </head>
@@ -46,7 +59,7 @@ $mobileId=$_GET["mobileId"];
 </div>
 <div class="row">
 <div class="col quickview">
-<h1 class="btn btn-secondary buttonquick"><a href="display.php?productID=<?php echo $d['p_id'] ?>"> See Details</a></h1>
+<h1 class="btn btn-secondary buttonquick"><a class="categorydesign" href="display.php?productID=<?php echo $d['p_id'] ?>"> See Details</a></h1>
 </div>
 <div class="col addcart">
 <h1 class="btn btn-secondary buttonquick">Add Cart</h1>

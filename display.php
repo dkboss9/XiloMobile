@@ -14,10 +14,15 @@
 <html>
 	<head>
 		<title>Xilo Mobile Hub E-commerce Site</title>
+		<link rel="stylesheet" type="text/css" href="bootstrap/dist/js/">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css ">
-		<link rel="stylesheet" type="text/css" href="style.css">
+		<script type="text/javascript"></script>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css ">
+	
+	<link rel="stylesheet" type="text/css" href="style.css">
+	
+	
 		<style>
 			.single-product
 			{
@@ -113,7 +118,7 @@
 						<h2><?php echo $d['mobilename']; ?></h2>
 						
 						<p class="price">Rs. <?php echo $d['price']; ?></p>
-						<p ><b>Views: </b> <?php echo $d['views'];?> &nbsp &nbsp &nbsp &nbsp &nbsp<b> Average Rating: </b><?php
+						<p ><b>Views: </b> <?php echo $d['views'];?> &nbsp &nbsp &nbsp &nbsp &nbsp<div id="avg"><b> Average Rating: </b><?php
 							$sqll="select AVG(rating) avg from tbl_rating where p_id='$productId'";
 							$result=mysqli_query($conn,$sqll);
 							while($dd=mysqli_fetch_array($result))
@@ -127,7 +132,8 @@
 									echo "N/A";
 								}
 							}
-						 ?></p>
+							
+						 ?></div></p>
 						<p><b>Camera:</b><?php echo $d["camera"];?></p>
 						<p><b>Processor:</b><?php echo $d["processor"];?></p>
 						<p><b>RAM/ROM:</b> <?php echo $d["ram"];?>/ <?php echo $d["rom"];?></p>
@@ -135,11 +141,20 @@
 						<p><b>Description:</b>Size is <?php echo $d["size"];?>.  Available color is <?php echo $d["color"];?>. Battery Power is <?php echo $d["battery"];?>. <?php echo $d["description"];?> 
 						</p>
 						<p><b>Availability:</b>In Stock</p>
+						<div id="cart">
 						<label>Quantity: </label>
-						<input type="number" step="1" min="1" max="20" value="1">
-						<button type="button" class="btn btn-primary">Add Cart</button>
+						<input type="number" step="1" min="1" max="5" value="1" id="quantity">
+						<?php 
+							if(!isset($_SESSION['id']))
+								{ ?>
+									<a href="login.php"><button type="button" class="btn btn-primary" id="order" >Order Now</button></a>
+						<?php	}else{
+						?>
+						<button type="button" class="btn btn-primary" id="cartAdd">Add Cart</button>
+						<?php } ?>
+						</div>
 						<!-- rating start -->
-						<div>
+						<div id="arating">
 							<!-- rating end -->
 							<?php 
 								if(isset($_SESSION['username']))
@@ -155,19 +170,18 @@
 
 
 										?>
-								<form action="insertRating.php" method="post">
+								
 								<fieldset class="rating">
 								<legend>Rate US:</legend>
+								<input id="p_id" type="hidden" name="" value="<?php echo $productId; ?>">
 								<input type="radio" id="star5" name="rating" value="5" /><label for="star5" name="five" title="Rocks!">5 stars</label>
 								<input type="radio" id="star4" name="rating" value="4" /><label for="star4" name="four" title="Excellent">4 stars</label>
 								<input type="radio" id="star3" name="rating" value="3" /><label for="star3" name="3" title="Preety Good">3 stars</label>
 								<input type="radio" id="star2" name="rating" value="2" /><label for="star2" name="2" title="Average">2 stars</label>
-								<input type="radio" id="star1" name="rating" value="1" checked /><label for="star1" name="1" title="Sucks big time">1 star</label>
+								<input type="radio" id="star1" name="rating" value="1"  /><label for="star1" name="1" title="Sucks big time">1 star</label>
+
 							</fieldset>
-							<br>
-							<br> &nbsp &nbsp
-							<input type="submit" name="submit" value="Rate" > 
-							</form>
+							
 							<?php } 
 						}
 			//Login needed to Give Rating
@@ -233,6 +247,27 @@
 		<section class="comment">
 			<div class="container">
 				<h6>Comments</h6>
+				<!--Posting all comments-->
+				<div id="all_comments">
+  <?php
+    
+  	
+    $comm = mysqli_query($conn,"select name,comment,date from tbl_comment where p_id=$productId order by date desc");
+    while($row=mysqli_fetch_array($comm))
+    {
+	  $name=$row['name'];
+	  $comment=$row['comment'];
+      $time=$row['date'];
+    ?>
+	
+<div id="hang"> 
+ <p class="name"><strong>commented by <?php echo $name;?> on <?php echo date("j-M-Y g:ia", strtotime($time)) ?>:</span></strong> 
+ 			<?php echo $comment;?></p>	
+		</div><?php
+    }
+    ?>
+  </div>
+  
 				<?php
     		//Checking whether user has login or not. If not Hiding Comment box from him 
 			if(isset($_SESSION['username']))
@@ -240,18 +275,28 @@
 			
 			
 		?>
-		<form action="" method="post">
-				
-				<textarea rows="4" cols="50" id="comment">
+		<!-- <form action="" method="post" onsubmit="return post(<?php echo $productId ?>);" id="comments"> -->
+				<input id="p_id" type="hidden" name="" value="<?php echo $productId; ?>">
+				<textarea  rows="4" cols="50" id="comment">
 			
 				</textarea>
 				<input type="submit" class="btn btn-submit" id="submit" >
-		</form>
+		<!-- </form> -->
 		</div>
 		</section>
+		<h2 id="error"></h2>
 	<?php  }
 	include "footer.php";
 
 	?>
+	<script src="js/jquery-2.2.3.min.js"></script>
+	<script src="js/commentscript.js">
+	    
+	</script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	</body>
+	</html>
 
 		

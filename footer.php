@@ -5,32 +5,31 @@
           <div class="row row-30">
             <div class="col-md-4 col-xl-5">
               <div class="pr-xl-4"><a class="brand" href="index.html"><img class="brand-logo-light" src="images/agency/logo-inverse-140x37.png" alt="" width="140" height="37" srcset="images/agency/logo-retina-inverse-280x74.png 2x"></a>
-                <p>We deliver products that we believe..</p>
+                <p><i class="fa fa-truck" aria-hidden="true"></i> We deliver products that we believe.. <i class="fa fa-truck" aria-hidden="true"></i></p>
                 <!-- Rights-->
-                <p class="rights"><span>©  </span><span class="copyright-year">2018</span><span> </span><span>Waves</span><span>. </span><span>All Rights Reserved.</span></p>
+                <p class="rights"><span>©  </span><span class="copyright-year">2019</span><span> </span><span>Xilo</span><span>. </span><span>All Rights Reserved.</span></p>
               </div>
             </div>
             <div class="col-md-4">
-              <h5>Contacts</h5>
+              <h5><i class="fa fa-phone-square" aria-hidden="true"></i> Contacts</h5>
               <dl class="contact-list">
-                <dt>Address:</dt>
+                <dt><i class="fa fa-address-book-o" aria-hidden="true"></i> Address</dt>
                 <dd>Tikathali,Lalitpur</dd>
               </dl>
               <dl class="contact-list">
-                <dt>email:</dt>
+                <dt><i class="fa fa-envelope" aria-hidden="true"></i> E-mail</dt>
                 <dd><a href="mailto:#">maharjanruchan@gmail.com</a></dd>
               </dl>
-              <dl class="contact-list">
-                <dt>phones:</dt>
+                <dl class="contact-list">
+                <dt><i class="fa fa-phone-square" aria-hidden="true"></i> Call US:</dt>
                 <dd><a href="tel:#">9868017555</a> <span>or</span> <a href="tel:#">9822546748</a>
                 </dd>
               </dl>
             </div>
             <div class="col-md-4 col-xl-3">
-              <h5>Quick Links</h5>
+              <h5>Information <i class="fa fa-info-circle" aria-hidden="true"></i></h5>
               <ul class="nav-list">
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contacts</a></li>
+                <li><a href="#"> <i class="fa fa-user-circle" aria-hidden="true"></i>  About Us</a></li>
               </ul>
             </div>
           </div>
@@ -94,8 +93,3 @@ ul, ol {
 }
       </style>
 				</section>
-				<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-				<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-				<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-			</body>
-		</html>
