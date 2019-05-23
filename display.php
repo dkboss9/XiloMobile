@@ -15,7 +15,7 @@
 	<head>
 		<title>Xilo Mobile Hub E-commerce Site</title>
 		<link rel="stylesheet" type="text/css" href="bootstrap/dist/js/">
-		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script type="text/javascript"></script>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css ">
@@ -84,8 +84,7 @@
 	<body>
 <?php
 	include "header.php";
-	
-
+	?><div id="aaa"><?php
     $selectsql="select * from tbl_product where p_id=$productId ";
     $result=mysqli_query($conn,$selectsql);
 
@@ -284,7 +283,7 @@
 		<!-- </form> -->
 		</div>
 		</section>
-		<h2 id="error"></h2>
+		<h2 id="error"></h2></div>
 	<?php  }
 	include "footer.php";
 
@@ -293,7 +292,7 @@
 	<script src="js/commentscript.js">
 	    
 	</script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	</body>
 	</html>
