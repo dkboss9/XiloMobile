@@ -195,7 +195,9 @@
       
    
       $_SESSION['username']=$username;
-      $_SESSION['id']=$id;
+      $result=mysqli_query($conn,"select id from tbl_user where username=$username");
+      $data=mysqli_fetch_assoc($result);
+      $_SESSION['id']=$data['id'];
         setcookie('username',$username,time()+7*24*60*60);
         setcookie('id',$id,time()+7*24*60*60);
        header('location:'.$url);
@@ -213,14 +215,12 @@
 <html>
 <head>
 
-  <link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.min.css">
-  <link href="fontawesome/css/all.css" rel="stylesheet">
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css ">
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+  
   <link rel="stylesheet" type="text/css" href="style.css">
+  
   <title>Login</title>
   <style>
     body{
@@ -276,7 +276,7 @@ h1.display-4{
   
 
 
-
+<div class="aaa">
   <div class="container">
     <br>
     <div class="row">
@@ -429,11 +429,11 @@ h1.display-4{
       </div>
     </div>
   </div>
+  </div>
+  <script src="js/commentscript.js">
+      
+  </script>
   
-  
-    <script src="js/validate.js"></script>
-    <script src="bootstrap/assets/js/vendor/jquery-slim.min.js"></script>
-    <script src="bootstrap/assets/js/vendor/popper.min.js"></script>
-    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>

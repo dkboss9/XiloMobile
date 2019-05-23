@@ -84,7 +84,7 @@
 	<body>
 <?php
 	include "header.php";
-	?><div id="aaa"><?php
+	?><div class="aaa"><?php
     $selectsql="select * from tbl_product where p_id=$productId ";
     $result=mysqli_query($conn,$selectsql);
 
@@ -283,12 +283,12 @@
 		<!-- </form> -->
 		</div>
 		</section>
-		<h2 id="error"></h2></div>
+		<h2 id="error"></h2>
 	<?php  }
 	include "footer.php";
 
 	?>
-	
+	</div>
 	<script src="js/commentscript.js">
 	    
 	</script>

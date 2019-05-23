@@ -4,13 +4,13 @@
 <div class="top-nav-bar">
 	<div class="search-box">
 		<a href="home.php"><img src="images/logo.jpg" class="logo"></a>
-		<input type="text" class="form-control">
-		<span class="input-group-text"><i class="fa fa-search"></i></span>
+		<input type="text" class="form-control" id="searching">
+		<span class="input-group-text" ><i class="fa fa-search"></i></span>
 	</div>
 
 	<div class="menu-bar">
 	<nav class="navbar navbar-expand-sm   navbar-light">
-		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation" >
 		    <span class="navbar-toggler-icon"></span>
 		  </button>
 

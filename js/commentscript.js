@@ -46,9 +46,9 @@
   //For Five Star
   $(document).ready(function () {
             $("#star5").click(function () {
+                var con=confirm("Give 5 Star");
+                if(con==true){
                 var pid = $('#p_id').val();
-                 alert("You gave 5 rating");
-
                     $.ajax({
                         url:"../rating/giveRating.php",
                         method:"post",
@@ -60,14 +60,15 @@
                         }
                         
                     });
+                }
             });
         });
   //For Four Star
   $(document).ready(function () {
             $("#star4").click(function () {
+                var con=confirm("Give 4 Star");
+                if(con==true){
                 var pid = $('#p_id').val();
-                  alert("You gave 4 rating");
-
                     $.ajax({
                         url:"../rating/giveRating.php",
                         method:"post",
@@ -78,14 +79,15 @@
                         }
                         
                     });
+                }
             });
         });
   //For Three Star
   $(document).ready(function () {
             $("#star3").click(function () {
+                var con=confirm("Give 3 Star");
+                if(con==true){
                 var pid = $('#p_id').val();
-                 alert("You gave 3 rating");
-
                     $.ajax({
                         url:"../rating/giveRating.php",
                         method:"post",
@@ -96,14 +98,15 @@
                         }
                         
                     });
+                }
             });
         });
   //For Two Star
   $(document).ready(function () {
             $("#star2").click(function () {
+                var con=confirm("Give 2 Star");
+                if(con==true){
                 var pid = $('#p_id').val();
-             alert("You gave 2 rating");
-
                     $.ajax({
                         url:"../rating/giveRating.php",
                         method:"post",
@@ -114,14 +117,15 @@
                         }
                         
                     });
+                }
             });
         });
   //For one star
   $(document).ready(function () {
             $("#star1").click(function () {
+                var con=confirm("Give 1 Star");
+                if(con==true){
                 var pid = $('#p_id').val();
-                  alert("You gave 1 rating");
-
                     $.ajax({
                         url:"../rating/giveRating.php",
                         method:"post",
@@ -132,13 +136,15 @@
                         }
                         
                     });
+                }
             });
         });
 
   //For adding to the cart
   $(document).ready(function () {
             $("#cartAdd").click(function () {
-                var pid = $('#p_id').val();
+                var con=confirm("Add to Cart");
+                if(con==true){
                 var quantity=$('#quantity').val();
                 alert("Product Added to Cart");
                     $.ajax({
@@ -151,6 +157,7 @@
                         }
                         
                     });
+                }
             });
         });
   //To view average rating without refreshing the page
@@ -220,6 +227,21 @@ $(document).ready(function () {
                         dataType:"text",
                         success:function(value){
                             $('#avg').html(value);
+                        }
+                    });
+            });
+        });
+//Search Function
+$(document).ready(function () {
+            $("#searching").keyup(function () {
+                var search = $('#searching').val();
+                    $.ajax({
+                        url:"../search/searchResult.php",
+                        method:"post",
+                        data: {"search":search},
+                        dataType:"text",
+                        success:function(value){
+                            $('.aaa').html(value);
                         }
                     });
             });
