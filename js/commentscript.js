@@ -29,7 +29,7 @@
             $("#submit").click(function () {
                 var pid = $('#p_id').val();
                 var comment = $('#comment').val();
-               alert("You gave 5 rating");
+              
 
                     $.ajax({
                         url:"../comment/post_comments.php",
