@@ -146,14 +146,14 @@
                 var con=confirm("Add to Cart");
                 if(con==true){
                 var quantity=$('#quantity').val();
-                alert("Product Added to Cart");
+                var pid=$('#p_id').val();
                     $.ajax({
                         url:"../cart/addToCart.php",
                         method:"post",
                         data: {"quantity":quantity,"p_id":pid},
                         dataType:"text",
                         success:function(value){
-                       
+                                $('#quantity').html(value);
                         }
                         
                     });

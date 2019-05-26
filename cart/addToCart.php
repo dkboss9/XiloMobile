@@ -12,5 +12,10 @@ include "../connect.php";
 	$price=$data['price'];
 	$finalPrice=$price*$quantity;
 	$insert="insert into tbl_cart (name,quantity,price,totalPrice,status,id,p_id) values ('$mobilename','$quantity','$price','$finalPrice','Added to Cart','$id','$product')";
-	mysqli_query($conn,$insert);
+	if(mysqli_query($conn,$insert))
+	{
+		echo "sucess";
+	}else{
+		echo "failed";
+	}
 

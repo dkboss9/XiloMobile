@@ -149,6 +149,7 @@
 									<a href="login.php"><button type="button" class="btn btn-primary" id="order" >Order Now</button></a>
 						<?php	}else{
 						?>
+						
 						<button type="button" class="btn btn-primary" id="cartAdd">Add Cart</button>
 						<?php } ?>
 						</div>
