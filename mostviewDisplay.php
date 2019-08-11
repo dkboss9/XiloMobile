@@ -2,6 +2,9 @@
 
 	session_start();
 	$_SESSION['url']=$_SERVER['REQUEST_URI'];
+	if(!empty($_SESSION['id'])){
+ 	$id=$_SESSION['id'];
+ }
 
 ?>
 
@@ -35,7 +38,9 @@ require_once"connect.php";
     $selectsql="select * from tbl_product order by views desc";
     $result=mysqli_query($conn,$selectsql);
 
-     while($d=mysqli_fetch_array($result)) { ?>
+     while($d=mysqli_fetch_array($result)) { 
+     	$productId=$d['p_id'];?>
+     	<input id="p_id" type="hidden" name="" value="<?php echo $productId; ?>">
 
 <div class="col-md-3">
 <div class="product-top">
@@ -51,19 +56,51 @@ require_once"connect.php";
 <h1 class="btn btn-secondary buttonquick"><a href="display.php?productID=<?php echo $d['p_id'] ?>"> See Details</a></h1>
 </div>
 <div class="col addcart">
-<h1 class="btn btn-secondary buttonquick">Add Cart</h1>
+<div id="cart">
+						<input type="hidden" value="1" id="quantity">
+						<?php 
+							if(!isset($_SESSION['id']))
+								{ ?>
+									<a href="login.php"><button type="button" class="btn btn-primary" id="order" >Order Now</button></a>
+						<?php	}else{
+							$cartDisplay="select cart_id from tbl_cart where p_id=$productId and id=$id";
+						$resultCart=mysqli_query($conn,$cartDisplay);
+						if(mysqli_num_rows($resultCart)>0)
+						{ ?>
+							<button type="button" class="btn btn-primary" id="cartAdd" disabled>Add Cart</button>
+						<?php 	
+						}else{
+
+						?>
+						
+						<a href="cartAdd.php?productII=<?php echo $productId; ?>"<button type="button" class="btn btn-primary" id="cartAddd">Add Cart</button></a>
+						<?php } }?>
+						</div>
 </div>
 </div>
 </div>
 <h5>Views: <?php echo $d['views']; ?></h5>
 <div class="product-bottom text-center">
-<i class="fa fa-star starcolor"></i>
-<i class="fa fa-star starcolor"></i>
-<i class="fa fa-star starcolor"></i>
-<i class="fa fa-star starcolor"></i>
-<i class="fa fa-star-half-o starcolor"></i>
+<div class="col-md-7">
+						<b> Average Rating: </b>
+	<?php
+							$sqll="select AVG(rating) avg from tbl_rating where p_id='$productId'";
+							$results=mysqli_query($conn,$sqll);
+							$dd=mysqli_fetch_assoc($results);
+								if(!empty($dd['avg']))
+								{
+									echo round( $dd['avg'], 1, PHP_ROUND_HALF_UP); ?>
+									<i class="fa fa-star starcolor"></i>
+							<?php
+								}else{
+									echo "N/A";
+								}
+							
+							
+						 ?>
 	<h3><?php echo $d['mobilename']; ?></h3>
 <h5>Rs.<?php echo $d['price']; ?></h5>
+</div></p>
 </div>
 </div>
 

@@ -8,7 +8,7 @@
 		$image=addslashes($_FILES['image']['name']);
 		$tmpname=addslashes(file_get_contents($_FILES['image']['tmp_name']));
 			$filetype=addslashes($_FILES['image']['type']);
-		$array=array('jpg','jpeg');
+		$array=array('jpg','jpeg','JPG');
 	$ext=pathinfo($image,PATHINFO_EXTENSION);
 	if(!empty($image)){
 		if(in_array($ext,$array)){
@@ -186,7 +186,7 @@
 		}
 	}
 		if($gender=="oneplus")
-	{$sql="insert into tbl_product(image,mobilename,price,camera,processor,ram,rom,version,size,color,battery,description,c_id,a_id,created_by,created_date) values ('$tmpname','$mobilename','$price','$camera','$processor','$ram','$rom','$version','$size','$color','$battery','$description','5','1','$admin','$date')";
+	{$sql="insert into tbl_product(image,mobilename,price,camera,processor,ram,rom,version,size,color,battery,description,c_id,a_id,created_by,created_date) values ('$tmpname','$mobilename','$price','$camera','$processor','$ram','$rom','$version','$size','$color','$battery','$description','3','1','$admin','$date')";
 		mysqli_query($conn,$sql);
 		
 		if (mysqli_insert_id($conn)>0) {
@@ -196,6 +196,18 @@
 			echo"Product insert failed";
 		}
 		}
+		if($gender=="other")
+	{
+		$sql="insert into tbl_product(image,mobilename,price,camera,processor,ram,rom,version,size,color,battery,description,c_id,a_id,created_by,created_date) values ('$tmpname','$mobilename','$price','$camera','$processor','$ram','$rom','$version','$size','$color','$battery','$description','6','1','$admin','$date')";
+		mysqli_query($conn,$sql);
+		
+		if (mysqli_insert_id($conn)>0) {
+			echo "Product inserted sucessfully";
+			
+		}else{
+			echo"Product insert failed";
+		}
+	}
 	}
 }
 ?>
@@ -307,6 +319,7 @@
 			<input type="radio" name="gender" value="vivo">Vivo
 			<input type="radio" name="gender" value="nokia">Nokia
 			<input type="radio" name="gender" value="oneplus">OnePlus
+			<input type="radio" name="gender" value="other">Other
 			<?php if(!empty($error["gender"]))
 			{
 				echo $error["gender"];

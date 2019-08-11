@@ -30,6 +30,7 @@
               <h5>Information <i class="fa fa-info-circle" aria-hidden="true"></i></h5>
               <ul class="nav-list">
                 <li><a href="#"> <i class="fa fa-user-circle" aria-hidden="true"></i>  About Us</a></li>
+                <li><a href="contact.php"> <i class="fa fa-phone-square" aria-hidden="true"></i>  Contact Us</a></li>
               </ul>
             </div>
           </div>

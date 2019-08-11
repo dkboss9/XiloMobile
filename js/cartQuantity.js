@@ -59,3 +59,34 @@ $(document).ready(function () {
                     });
             });
         });
+$(document).ready(function () {
+            $(".plus").click(function (){
+                var pid = $('#dd_id').val();
+                    $.ajax({
+                        url:"../cart/updatePrice.php",
+                        method:"post",
+                        data: {"c_id":pid},
+                        dataType:"text",
+                        success:function(value){
+                            $('#totalPrices').html(value);
+                            
+                        }
+                    });
+            
+            });
+        });
+$(document).ready(function () {
+            $(".minus").click(function () {
+                var pid = $('#dd_id').val();
+                    $.ajax({
+                        url:"../cart/updatePrice.php",
+                        method:"post",
+                        data: {"c_id":pid},
+                        dataType:"text",
+                        success:function(value){
+                            $('#totalPrices').html(value);
+                            
+                        }
+                    });
+            });
+        });

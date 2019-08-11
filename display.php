@@ -84,11 +84,13 @@
 	<body>
 <?php
 	include "header.php";
+	include "product_recommend.php";
 	?><div class="aaa"><?php
     $selectsql="select * from tbl_product where p_id=$productId ";
     $result=mysqli_query($conn,$selectsql);
-
+    $aaaaa="";
      while($d=mysqli_fetch_array($result)) {
+     	$aaaaa=$d['mobilename'];
 ?>
 
 
@@ -148,10 +150,18 @@
 								{ ?>
 									<a href="login.php"><button type="button" class="btn btn-primary" id="order" >Order Now</button></a>
 						<?php	}else{
+							$cartDisplay="select cart_id from tbl_cart where p_id=$productId and id=$id";
+						$result=mysqli_query($conn,$cartDisplay);
+						if(mysqli_num_rows($result)>0)
+						{ ?>
+							<button type="button" class="btn btn-primary" id="cartAdd" disabled>Add Cart</button>
+						<?php 	
+						}else{
+
 						?>
 						
 						<button type="button" class="btn btn-primary" id="cartAdd">Add Cart</button>
-						<?php } ?>
+						<?php } }?>
 						</div>
 						<!-- rating start -->
 						<div id="arating">
@@ -242,6 +252,104 @@
 				</div>
 	</section>
 <?php } ?>
+<div class="row">
+<?php 
+	$d=mysqli_fetch_array($result);
+	$matrix=array();
+	$select="select * from tbl_product";
+	$result=mysqli_query($conn,$select);
+	$currentPrice = mysqli_query($conn,"Select price from tbl_product where p_id=$productId");
+	$ppp=mysqli_fetch_array($currentPrice);
+	$c_price=$ppp['price'];
+	// echo $c_price;
+	$lowPrice=0;
+	$highPrice = 0;
+	while($dataa=mysqli_fetch_array($result))
+	{
+
+		$matrix[$dataa['mobilename']]['price']=$dataa['price'];
+		$matrix[$dataa['mobilename']]['views']=$dataa['views'];
+		
+			$lowPrice=$matrix[$dataa['mobilename']]['price']=$dataa['price'];
+			$highPrice=$matrix[$dataa['mobilename']]['price']=$dataa['price'];
+
+		
+	}
+	echo "<h1>".count($matrix)."</h1>";
+	
+	// print_r($matrix[1]);
+	foreach ($matrix as $key => $value) {
+		// echo '<pre>';
+		// // print_r($key);
+		// echo $value['price'];
+		if($value['price'] < $lowPrice){
+			$lowPrice = $value['price'];
+		}
+		if($value['price'] > $highPrice){
+			$highPrice = $value['price'];
+		}
+	}
+
+	foreach ($matrix as $key => $value){
+		$normalized[$key][
+		'price'] = ($c_price - $lowPrice)/($highPrice - $lowPrice);
+	}
+	echo "<pre>";
+	print_r($normalized);
+
+
+	  // echo "<pre>";
+	  // print_r($matrix);
+	  // echo "</pre>";
+
+	$r=getRecommendation($matrix,$aaaaa);
+	
+	
+	foreach ($r as $key=>$value) 
+	{
+
+		$rp=$key;
+		$select="select * from tbl_product where mobilename='$rp'";
+		$result=mysqli_query($conn,$select);
+		while($d=mysqli_fetch_array($result)) { 
+
+	 	?>
+
+				<div class="col-md-3">
+				<div class="product-top">
+				<div class="productdesign">
+					<a href="display.php?productID=<?php echo $d['p_id'] ?>";>
+				<?php
+				                            echo '<img src="data:images/jpeg;base64,'.base64_encode($d['image']).'"height ="300" width="300">';
+				                          ?>
+				                          </a>
+				</div>
+				<div class="row">
+				<div class="col quickview">
+				<h1 class="btn btn-secondary buttonquick"><a class="categorydesign" href="display.php?productID=<?php echo $d['p_id'] ?>"> See Details</a></h1>
+				</div>
+				<div class="col addcart">
+				<h1 class="btn btn-secondary buttonquick">Add Cart</h1>
+				</div>
+				</div>
+				</div>
+				<div class="product-bottom text-center">
+				<i class="fa fa-star starcolor"></i>
+				<i class="fa fa-star starcolor"></i>
+				<i class="fa fa-star starcolor"></i>
+				<i class="fa fa-star starcolor"></i>
+				<i class="fa fa-star-half-o starcolor"></i>
+					<h3><?php echo $d['mobilename']; ?></h3>
+				<h5>Rs. <?php echo $d['price']; ?></h5>
+				</div>
+				</div>
+
+	<?php }
+	}
+
+?>
+
+
 		<!--Begin User Comment -->
 		
 		<section class="comment">
@@ -260,10 +368,10 @@
       $time=$row['date'];
     ?>
 	
-<div id="hang"> 
+<div id="hang"> </div>
  <p class="name"><strong>commented by <?php echo $name;?> on <?php echo date("j-M-Y g:ia", strtotime($time)) ?>:</span></strong> 
  			<?php echo $comment;?></p>	
-		</div><?php
+		<?php
     }
     ?>
   </div>

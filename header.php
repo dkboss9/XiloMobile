@@ -16,7 +16,7 @@
 
 		  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 				<ul>
-					<li><a href="home.php"><i class="fa fa-home"></i> HOME</a></li>
+					<li><a href="home.php"><i class="fa fa-home"></i><br> HOME</a></li>
 					<li><a href="mostviewDisplay.php">Most View</a></li>
 					<li><a href="cart.php"><i class="fa fa-shopping-basket"></i>CART</a></li>
 					<?php 
@@ -26,7 +26,7 @@
 					<?php	} else {
 					 ?>
 					<li class="nav-item dropdown dmenu">
-						<i class="fa fa-user usermanage"></i>
+						<i class="fa fa-user usermanage"></i><br>
 				      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
 				        ACCOUNT
 				      </a>
@@ -36,9 +36,15 @@
 				      </div>
 					</li>
 					<?php } ?>	
-					<li><a href="user_recommendation.php"> Recommended</a></li>
+					<li><a href="user_recommendation.php"> Recommendation Us</a></li>
 				</ul>
-		<style>
+		
+	</div>
+	</nav>
+</div>
+</div>
+
+<style>
 
 			.dropdown{
 				    border-radius:0;
@@ -64,14 +70,53 @@
 					}
 					nav.navbar.navbar-expand-sm.navbar-light {
 					    padding: 0px;
+					    float:right;
 					}
 					.dropdown-menu.sm-menu.show {
 				    background-color: #468184;
 				    min-width: 146px;
 				}
+
+.menu-bar {
+    width: 45%;
+    height: 75px;
+    float: right;
+}
+.menu-bar ul
+{
+	display: inline-flex;
+	float: right;
+
+}
+.menu-bar li
+{
+	border-left: 1px solid #fff;
+	 list-style-type: none;
+	 padding: 0px;
+	 text-align: center;
+	 background-color: orange;
+	 cursor: pointer;
+	 
+}
+.menu-bar li a
+{
+	font-size: 16px;
+	font-weight: bold;
+	color: #fff;
+	text-decoration: none;
+
+}
+.menu-bar li a:hover
+{
+	color: red;
+}
+
+#navbarTogglerDemo03 ul li{
+	width: 122px;
+	height: 72px;
+	float: left;
+	text-align: center;
+}
+
 			
 		</style>
-	</div>
-	</nav>
-</div>
-</div>

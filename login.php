@@ -195,8 +195,9 @@
       
    
       $_SESSION['username']=$username;
-      $result=mysqli_query($conn,"select id from tbl_user where username=$username");
+      $result=mysqli_query($conn,"select id,username from tbl_user where username=$username");
       $data=mysqli_fetch_assoc($result);
+       $_SESSION['username']=$data['username'];
       $_SESSION['id']=$data['id'];
         setcookie('username',$username,time()+7*24*60*60);
         setcookie('id',$id,time()+7*24*60*60);

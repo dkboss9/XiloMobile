@@ -7,3 +7,4 @@
 	$result=mysqli_query($conn,$select);
 	$data=mysqli_fetch_array($result);
 	echo $data['totalPrice'];
+?>

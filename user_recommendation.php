@@ -47,11 +47,12 @@
 		$userids=mysqli_fetch_array($users);
 		$matrix[$userid['username']][$userids['mobilename']]=$pro['rating'];
 	}
-	// echo "<prev>";
-	// print_r($matrix);
-	// echo "</prev>";
+	 echo "<pre>";
+	 print_r($matrix);
+	 echo "</pre>";
 
 	$r=getRecommendation($matrix,$id);
+	print_r($r);
 	foreach ($r as $key=>$value) 
 	{
 		$rp=$key;

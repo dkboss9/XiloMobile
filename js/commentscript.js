@@ -145,6 +145,7 @@
             $("#cartAdd").click(function () {
                 var con=confirm("Add to Cart");
                 if(con==true){
+                $("#cartAdd").attr("disabled",true);
                 var quantity=$('#quantity').val();
                 var pid=$('#p_id').val();
                     $.ajax({
@@ -153,7 +154,7 @@
                         data: {"quantity":quantity,"p_id":pid},
                         dataType:"text",
                         success:function(value){
-                                $('#quantity').html(value);
+                                
                         }
                         
                     });
