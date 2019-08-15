@@ -37,7 +37,7 @@ $page1=($page*10)-10;
    	<div class="container-fluid main-container">
 	<?php include("include/side_bar.php");?>
     <div class="col-md-9 content" style="margin-left:10px">
-    <div class="panel-heading" style="background-color:#c4e17f">
+    <div class="panel-heading" style="background-color:red;">
 	<h1>Orders  / Page <?php echo $page;?> </h1></div><br>
 <div class='table-responsive'>  
 <div style="overflow-x:scroll;">

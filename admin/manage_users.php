@@ -32,7 +32,7 @@ mysqli_query($conn,"delete from tbl_admin where a_id=$a_id");
 
 <?php include("include/side_bar.php"); ?>
 <div class="col-sm-9" style="margin-left:10px"> 
-<div class="panel-heading" style="background-color:#c4e17f">
+<div class="panel-heading" style="background-color:red;">
 	<h1>Manage Admin</h1></div><br>
 
 <div style="overflow-x:scroll;">

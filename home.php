@@ -110,7 +110,7 @@ require_once"connect.php";
 </div>
 <div class="row">
 <div class="col quickview">
-<h1 class="btn btn-secondary buttonquick"><a href="display.php?productID=<?php echo $d['p_id'] ?>"> See Details</a></h1>
+<h1 class="btn btn-secondary buttonquick"><a class="descriptiondesign" href="display.php?productID=<?php echo $d['p_id'] ?>">Details</a></h1>
 </div>
 <div class="col addcart">
 <div id="cart">
@@ -195,7 +195,7 @@ require_once"connect.php";
 </div>
 <div class="row">
 <div class="col quickview">
-<h1 class="btn btn-secondary buttonquick"><a href="display.php?productID=<?php echo $d['p_id'] ?>"> See Details</a></h1>
+<h1 class="btn btn-secondary buttonquick"><a class="descriptiondesign" href="display.php?productID=<?php echo $d['p_id'] ?>">Details</a></h1>
 </div>
 <div class="col addcart">
 <div id="cart">
@@ -254,13 +254,14 @@ require_once"connect.php";
 </section>
 
 <!-- Recommended Products-->
-<section class="on-recommendation">
+
+<!-- <section class="on-recommendation">
 <div class="container">
 	<div class="title-box">
 	<h2>Recommended</h2>
 		
 </div>
-</section>
+</section> -->
 
 
 <!-- Footer-->

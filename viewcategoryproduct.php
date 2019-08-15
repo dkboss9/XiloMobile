@@ -19,6 +19,19 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 	
 </head>
+<style>
+  .descriptiondesign
+  {
+    text-decoration: none;
+    color: white;
+  }
+  .descriptiondesign:hover
+  {
+    text-decoration: none;
+    color: red;
+  
+  }
+</style>
 <body>
 <!-- Begin of Top Nav Bar -->
 <?php  
@@ -53,7 +66,7 @@ $mobileId=$_GET['mobileId'];
 </div>
 <div class="row">
 <div class="col quickview">
-<h1 class="btn btn-secondary buttonquick"><a href="display.php?productID=<?php echo $d['p_id'] ?>"> See Details</a></h1>
+<h1 class="btn btn-secondary buttonquick"><a class="descriptiondesign" href="display.php?productID=<?php echo $d['p_id'] ?>">Details</a></h1>
 </div>
 <div class="col addcart">
 <div id="cart">
@@ -61,7 +74,7 @@ $mobileId=$_GET['mobileId'];
 						<?php 
 							if(!isset($_SESSION['id']))
 								{ ?>
-									<a href="login.php"><button type="button" class="btn btn-primary" id="order" >Order Now</button></a>
+									<a class="descriptiondesign" href="login.php"><button type="button" class="btn btn-primary" id="order" >Order Now</button></a>
 						<?php	}else{
 							$cartDisplay="select cart_id from tbl_cart where p_id=$productId and id=$id";
 						$resultCart=mysqli_query($conn,$cartDisplay);
@@ -112,16 +125,6 @@ $mobileId=$_GET['mobileId'];
 
 
 </div>
-
-
-
-
-
-
-
-
-
-
 
 <script src="js/commentscript.js">
 	    

@@ -78,6 +78,25 @@
 				border: none;
 				box-shadow: none !important;
 				}
+				.row {
+    			display: -ms-flexbox;
+    			display: flex;
+                -ms-flex-wrap: wrap;
+    			flex-wrap: wrap;
+    			margin-right: 0px;
+    			margin-left: 0px;
+}
+ 			  	.descriptiondesign
+  				{
+   				 text-decoration: none;
+   				 color: white;
+  				}
+  				.descriptiondesign:hover
+				  {
+				    text-decoration: none;
+				    color: red;
+				  
+				  }
 		</style>
 		
 	</head>
@@ -137,7 +156,8 @@
 						 ?></div></p>
 						<p><b>Camera:</b><?php echo $d["camera"];?></p>
 						<p><b>Processor:</b><?php echo $d["processor"];?></p>
-						<p><b>RAM/ROM:</b> <?php echo $d["ram"];?>/ <?php echo $d["rom"];?></p>
+						<p><b>RAM/ROM:</b> <?php echo $d["ram"];
+						echo "GB";?> / <?php echo $d["rom"];echo "GB";?></p>
 						<p><b>Version:</b><?php echo $d["version"];?></p>
 						<p><b>Description:</b>Size is <?php echo $d["size"];?>.  Available color is <?php echo $d["color"];?>. Battery Power is <?php echo $d["battery"];?>. <?php echo $d["description"];?> 
 						</p>
@@ -252,32 +272,56 @@
 				</div>
 	</section>
 <?php } ?>
+<br><br><br>
 <div class="row">
+
 <?php 
 	$d=mysqli_fetch_array($result);
 	$matrix=array();
 	$select="select * from tbl_product";
 	$result=mysqli_query($conn,$select);
-	$currentPrice = mysqli_query($conn,"Select price from tbl_product where p_id=$productId");
-	$ppp=mysqli_fetch_array($currentPrice);
-	$c_price=$ppp['price'];
+	$current = mysqli_query($conn,"Select * from tbl_product where p_id=$productId");
+	$ppp=mysqli_fetch_array($current);
+	$c_mobilename=$ppp['mobilename'];
 	// echo $c_price;
 	$lowPrice=0;
 	$highPrice = 0;
+	$lowView = 0;
+	$highView =0;
+	$lowRam=0;
+	$highRam=0;
+	$lowRom=0;
+	$highRom=0;
+
+	//UnNormalized Matrix
 	while($dataa=mysqli_fetch_array($result))
 	{
 
 		$matrix[$dataa['mobilename']]['price']=$dataa['price'];
 		$matrix[$dataa['mobilename']]['views']=$dataa['views'];
+		$matrix[$dataa['mobilename']]['ram']=$dataa['ram'];
+		$matrix[$dataa['mobilename']]['rom']=$dataa['rom'];
 		
 			$lowPrice=$matrix[$dataa['mobilename']]['price']=$dataa['price'];
 			$highPrice=$matrix[$dataa['mobilename']]['price']=$dataa['price'];
 
+			$lowView=$matrix[$dataa['mobilename']]['views']=$dataa['views'];
+			$highView=$matrix[$dataa['mobilename']]['views']=$dataa['views'];
+
+			$lowRam=$matrix[$dataa['mobilename']]['ram']=$dataa['ram'];
+			$highRam=$matrix[$dataa['mobilename']]['ram']=$dataa['ram'];
+
+			$lowRom=$matrix[$dataa['mobilename']]['rom']=$dataa['rom'];
+			$highRom=$matrix[$dataa['mobilename']]['rom']=$dataa['rom'];
+
 		
 	}
-	echo "<h1>".count($matrix)."</h1>";
-	
-	// print_r($matrix[1]);
+	//echo "<h1>".count($matrix)."</h1>";
+	//Printing the matrix
+	// echo "UnNormalised matrix";
+	// echo "<pre>";
+	// print_r($matrix);
+	// echo "<pre>";
 	foreach ($matrix as $key => $value) {
 		// echo '<pre>';
 		// // print_r($key);
@@ -288,30 +332,115 @@
 		if($value['price'] > $highPrice){
 			$highPrice = $value['price'];
 		}
-	}
+		if($value['views'] < $lowView){
+			$lowView = $value['views'];
+		}
+		if($value['views'] > $highView){
+			$highView = $value['views'];
+		}
+		if($value['ram'] < $lowRam){
+			$lowRam = $value['ram'];
+		}
+		if($value['ram'] > $highRam){
+			$highRam = $value['ram'];
+		}
+		if($value['rom'] < $lowRom){
+			$lowRom = $value['rom'];
+		}
+		if($value['rom'] > $highRom){
+			$highRom = $value['rom'];
+		}
 
+	}
+	$i=0;
+	//For Normalization Of the Matrix
 	foreach ($matrix as $key => $value){
 		$normalized[$key][
-		'price'] = ($c_price - $lowPrice)/($highPrice - $lowPrice);
+		'price'] = ($value['price'] - $lowPrice)/($highPrice - $lowPrice);
+		$cp[$i][$i] = ($value['price'] - $lowPrice)/($highPrice - $lowPrice);
+		$normalized[$key][
+		'views'] = ($value['views'] - $lowView)/($highView - $lowView);
+		$cv[$i][$i] = ($value['views'] - $lowView)/($highView - $lowView);
+		$normalized[$key]['ram'] = ($value['ram'] - $lowRam)/($highRam - $lowRam);
+		$normalized[$key][
+		'rom'] = ($value['rom'] - $lowRom)/($highRom - $lowRom);
+		$i++;
 	}
-	echo "<pre>";
-	print_r($normalized);
+	/*Normalized marrix printing*/
+	// echo "normalized matrix";
+	// echo "<pre>";
+	// print_r($normalized);
+	// echo "<pre>";
 
 
-	  // echo "<pre>";
-	  // print_r($matrix);
-	  // echo "</pre>";
 
-	$r=getRecommendation($matrix,$aaaaa);
+
+
+
+	// print_r($cp);
+	// print_r($cv);
+	?>
+	<form action="unnormalize.php" method="post">
+			<div class="normalization">
+				<input type="hidden" id="normalization" name="unnormalize" value="<?php print_r($matrix); ?>">
+				&nbsp; &nbsp; &nbsp;<input type="submit" value="View Un normalized matrix" id="abc">
+			</div>
+		</form>
+		<form action="normalize.php" method="post">
+			<div class="normalization">
+				<input type="hidden" name="normalize" value="<?php print_r($normalized); ?>">
+				&nbsp; &nbsp; &nbsp;<input type="submit" value="View Normalized matrix" id="abcd">
+			</div>
+		</form>
+		<br>
+		</br>
+		<br>
+		</br>
+<?php
+	$k = 0;
+	//Cosine similarity Formula
+	 	foreach( $matrix as $key => $value ) {
+
+
+
+	 		$cossine[$key] = ($normalized[$c_mobilename]['price'] * $cp[$k][$k] +  $normalized[$c_mobilename]['views'] * $cv[$k][$k])/( sqrt(pow($normalized[$c_mobilename]['price'], 2) + pow($normalized[$c_mobilename]['views'], 2)) * sqrt(pow($cp[$k][$k], 2) + pow($cv[$k][$k], 2)) );
+
+
+	 		$k++;
+
+	 		
+	 	   }
+	 	   array_multisort($cossine,SORT_DESC);
+	 	/*Similarity value Printing */
+
+			// echo "<pre>";
+			// print_r($cossine);
+	  // 		echo "</pre>";
+
+
+
+
+
+
+
+	  		// print_r($matrix);
+	  		// echo "</pre>";
+
+	//$r=getRecommendation($matrix,$aaaaa);
 	
-	
-	foreach ($r as $key=>$value) 
+	$a=1;
+	?>
+		<div class="row"><?php
+	foreach ($cossine as $key=>$value) 
 	{
-
+		if($key!=$c_mobilename && $a<5)
+		{
+		$a++;
 		$rp=$key;
 		$select="select * from tbl_product where mobilename='$rp'";
 		$result=mysqli_query($conn,$select);
 		while($d=mysqli_fetch_array($result)) { 
+			$dddd=$d['p_id'];
 
 	 	?>
 
@@ -326,7 +455,7 @@
 				</div>
 				<div class="row">
 				<div class="col quickview">
-				<h1 class="btn btn-secondary buttonquick"><a class="categorydesign" href="display.php?productID=<?php echo $d['p_id'] ?>"> See Details</a></h1>
+				<h1 class="btn btn-secondary buttonquick"><a class="descriptiondesign" href="display.php?productID=<?php echo $d['p_id'] ?>">Details</a></h1>
 				</div>
 				<div class="col addcart">
 				<h1 class="btn btn-secondary buttonquick">Add Cart</h1>
@@ -334,24 +463,36 @@
 				</div>
 				</div>
 				<div class="product-bottom text-center">
-				<i class="fa fa-star starcolor"></i>
-				<i class="fa fa-star starcolor"></i>
-				<i class="fa fa-star starcolor"></i>
-				<i class="fa fa-star starcolor"></i>
-				<i class="fa fa-star-half-o starcolor"></i>
+				<b> Average Rating: </b>
+	<?php
+							$sqll="select AVG(rating) avg from tbl_rating where p_id='$dddd'";
+							$results=mysqli_query($conn,$sqll);
+							$dd=mysqli_fetch_assoc($results);
+								if(!empty($dd['avg']))
+								{
+									echo round( $dd['avg'], 1, PHP_ROUND_HALF_UP); ?>
+									<i class="fa fa-star starcolor"></i>
+							<?php
+								}else{
+									echo "N/A";
+								}
+							
+							
+						 ?>
 					<h3><?php echo $d['mobilename']; ?></h3>
 				<h5>Rs. <?php echo $d['price']; ?></h5>
+				<h5>Similarity Value: <?php echo $value; ?></h5>
 				</div>
 				</div>
 
 	<?php }
 	}
+}
 
 ?>
 
 
 		<!--Begin User Comment -->
-		
 		<section class="comment">
 			<div class="container">
 				<h6>Comments</h6>
@@ -394,9 +535,11 @@
 		</section>
 		<h2 id="error"></h2>
 	<?php  }
-	include "footer.php";
-
+	//include "footer.php";
 	?>
+	
+	
+	
 	</div>
 	<script src="js/commentscript.js">
 	    
@@ -406,4 +549,3 @@
 	</body>
 	</html>
 
-		

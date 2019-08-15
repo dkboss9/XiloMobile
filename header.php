@@ -36,7 +36,7 @@
 				      </div>
 					</li>
 					<?php } ?>	
-					<li><a href="user_recommendation.php"> Recommendation Us</a></li>
+					<li><a href="user_recommendation.php"> Recommendation</a></li>
 				</ul>
 		
 	</div>

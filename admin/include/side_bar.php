@@ -11,7 +11,7 @@
 
 <li><button style="width:240px; height:50px" type="button" class="btn btn-default btn-primary" onClick="location.href='manage_customer.php'"><span class="glyphicon glyphicon-edit pull-left"></span> Customers </button></li>
 
-  <li><button style="width:240px; height:50px" type="button" class="btn btn-default btn-success" onClick="location.href='orders.php'"> <span class="glyphicon glyphicon-edit pull-left"></span> Oders </button></li>
+  <li><button style="width:240px; height:50px" type="button" class="btn btn-default btn-success" onClick="location.href='orders.php'"> <span class="glyphicon glyphicon-edit pull-left"></span> Orders </button></li>
   
   <li><button style="width:240px; height:50px" type="button" class="btn btn-default btn-primary" onClick="location.href='add_product.php'"> <span class="glyphicon glyphicon-edit pull-left"></span> Add Product </button></li>
   <li>

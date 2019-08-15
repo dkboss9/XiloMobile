@@ -236,7 +236,7 @@
 	<?php include("include/side_bar.php");?>
     <div class="col-md-9 content" style="margin-left:10px">
   	<div class="panel panel-default">
-	<div class="panel-heading" style="background-color:#c4e17f">
+	<div class="panel-heading" style="background-color:red;">
 	<h1><span class="glyphicon glyphicon-tag"></span> Product / Add Product  </h1></div><br>
 	<div class="panel-body" style="background-color:#E6EEEE;">
 		<div class="col-lg-7">

@@ -47,12 +47,17 @@
 		$userids=mysqli_fetch_array($users);
 		$matrix[$userid['username']][$userids['mobilename']]=$pro['rating'];
 	}
-	 echo "<pre>";
-	 print_r($matrix);
-	 echo "</pre>";
+	/* Rating of the product by user matrix */
+	 // echo "<pre>";
+	 // print_r($matrix);
+	 // echo "</pre>";
 
 	$r=getRecommendation($matrix,$id);
+	/* calculatiin recommendation product similarity */
+	
 	print_r($r);
+
+
 	foreach ($r as $key=>$value) 
 	{
 		$rp=$key;

@@ -38,13 +38,21 @@ mysqli_close($connection);
 		min-height: 20px;
 		padding: 19px;
 		margin-bottom: 20px;
-		background-color: #c4e17f;
+		background-color: red;
 		max-width: 100%;
 		height: 100%;
 
 	}
 	body{
-		background-color: #c4e17f;
+		background-color: lightgrey;
+	}
+	#container{
+		width:800px;
+		padding-top:150px;
+		padding-bottom:550px;
+		padding-left: 350px;
+		padding-right: 250px;
+		box-shadow: 10px black;
 	}
 
 
@@ -52,26 +60,28 @@ mysqli_close($connection);
 	
 </style>
 <body>
-<div class="well" align="center">
-<img src="../images/logo.jpg">
-<h1 align="center">Welcome &nbsp;&nbsp;
-Admin Login</h1>
-<div align="center">
-<form action="login.php" method="post" id="login" name="login" enctype="multipart/form-data">
-<div class="form-group">
-<input type="text" style="font-size:18px; width:200px" class="input-lg" name="user_name" id="user_name" placeholder="User-Name" required autofocus>
-</div>
-<div class="form-group">
-<input type="password" class="input-lg" name="password" style="font-size:18px; width:200px" id="password" placeholder="Password" required>
- </div>
- <br>
- <div class="form-group">
-<button class="btn btn-large btn-lg btn-success" type="submit" name="submit" id="submit">Log in</button>
+	<div id="container">
+			<div class="well" align="center">
+			<img src="../images/logo.jpg">
+			<h1 align="center">Welcome &nbsp;&nbsp;
+			Admin Login</h1>
+			<div align="center">
+			<form action="login.php" method="post" id="login" name="login" enctype="multipart/form-data">
+			<div class="form-group">
+			<input type="text" style="font-size:18px; width:200px" class="input-lg" name="user_name" id="user_name" placeholder="User-Name" required autofocus>
+			</div>
+			<div class="form-group">
+			<input type="password" class="input-lg" name="password" style="font-size:18px; width:200px" id="password" placeholder="Password" required>
+			 </div>
+			 <br>
+			 <div class="form-group">
+			<button class="btn btn-large btn-lg btn-success" type="submit" name="submit" id="submit">Log in</button>
 
-</div>
+			</div>
 
-</form>
-</div>
-</div>
+			</form>
+			</div>
+			</div>
+	</div>
 </body>
 </html>

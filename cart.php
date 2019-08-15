@@ -66,7 +66,7 @@ $id=null;
          
       ?>
        <tr >
-           <input id="dd_id" type="text" name="" value="<?php echo  $data['cart_id']; ?>">
+           <input id="dd_id" type="hidden" name="" value="<?php echo  $data['cart_id']; ?>">
           <th><?php echo $data['name']?></th>
           <th><input type="submit" class="minus" value="-">
           <label id="q"><?php echo $data['quantity']?></label id>
@@ -85,10 +85,7 @@ $id=null;
           <th colspan="2" style="text-align: center;">TOTAL</th>
           <th><div id="totalPrices"><?php echo $sum?></div></th>
         
-          <th><a href="#"><button>Check Out</button></a></th>
-        </tr>
-      </table>
-    <form action="https://uat.esewa.com.np/epay/main" method="POST">
+          <th><form action="https://uat.esewa.com.np/epay/main" method="POST">
     <input value="<?php echo $sum; ?>" name="tAmt" type="hidden">
     <input value="<?php echo $sum; ?>" name="amt" type="hidden">
     <input value="0" name="txAmt" type="hidden">
@@ -98,16 +95,15 @@ $id=null;
     <input value="ee2c3ca1-696b-4cc5-a6be-2c40d929d453" name="pid" type="hidden">
     <input value="http://localhost/project/xilomobile/home.php" type="hidden" name="su">
     <input value="http://merchant.com.np/page/esewa_payment_failed?q=fu" type="hidden" name="fu">
-    <input value="Submit" type="submit">
-    </form>
+    <input value="Checkout" type="submit">
+    </form></a></th>
+        </tr>
+      </table>
 
-</body>
 
-    </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/commentscript.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
- <script src="js/commentscript.js"></script>
- <script src="js/cartQuantity.js"></script>
+
 
 
 

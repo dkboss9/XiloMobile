@@ -11,14 +11,14 @@
 				<span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="#" style="font-size:24px">
-				Admin Panel	</a>		</div>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Admin Panel	</a>		</div>
 
-<div class="collapse navbar-collapse">
-<ul class="nav navbar-nav navbar-right">
-<li class="dropdown ">
-<a href="#">Settings</a></li>
-        <li><a href="logout.php">Logout</a></li>
-	</ul>
-	  </div><!-- /.navbar-collapse -->
+
   </div><!-- /.container-fluid -->
 	</nav>
+	<style>
+	.navbar-default {
+    background-color: orange;
+    border-color: black;
+}
+</style>

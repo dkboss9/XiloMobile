@@ -21,7 +21,7 @@ $user_id=$_SESSION['user_id'];
     
 	<div class="col-md-9 content" style="margin-left:10px">
   	<div class="panel panel-default">
-	<div class="panel-heading" style="background-color:#c4e17f">
+	<div class="panel-heading" style="background-color: red;">
 	<h1>Welcome  </h1></div><br>
 	<div class="panel-body">
 		<h3>
@@ -36,3 +36,13 @@ echo "<h1 style='color:#0C0'>Your Product was added successfully &nbsp;&nbsp;  <
 <?php include("include/js.php"); ?>
 </body>
 </html>
+<style>
+.panel {
+    margin-bottom: 20px;
+    background-color: lightgrey;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+</style>
