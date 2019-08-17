@@ -110,6 +110,7 @@ $mobileId=$_GET['mobileId'];
 								}
 							
 							
+							
 						 ?>
 	<h3><?php echo $d['mobilename']; ?></h3>
 <h5>Rs.<?php echo $d['price']; ?></h5>

@@ -19,8 +19,12 @@
   <span class="glyphicon glyphicon-edit pull-left"></span>  Products  Lists <span class="glyphicon glyphicon-triangle-bottom pull-right"></span>
   </button>
   <ul class="dropdown-menu" style="width:240px">
-    <li><a href="clothes_list.php"><strong>Samsung</strong> </a></li>
- <li><a href="cosmetics_list.php"><strong> Oppo</strong></a></li>
+    <li><a href="samsungList.php"><strong>Samsung</strong> </a></li>
+ <li><a href="oppoList.php"><strong> Oppo</strong></a></li>
+ <li><a href="vivoList.php"><strong>Vivo</strong> </a></li>
+ <li><a href="oneplusList.php"><strong>One Plus</strong> </a></li>
+ <li><a href="nokiaList.php"><strong>Nokia</strong> </a></li>
+ <li><a href="othersList.php"><strong>Others</strong> </a></li>
    </ul></li>
 
  

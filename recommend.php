@@ -43,7 +43,7 @@ function getRecommendation($matrix,$person)
 				$sim=similarity_distance($matrix,$person,$otherPerson);
 				/* For similarity between user */
 				
-				var_dump($sim);
+				//var_dump($sim);
 
 
 				foreach ($matrix[$otherPerson] as $key => $value) {
