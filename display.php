@@ -362,8 +362,10 @@
 		'views'] = ($value['views'] - $lowView)/($highView - $lowView);
 		$cv[$i][$i] = ($value['views'] - $lowView)/($highView - $lowView);
 		$normalized[$key]['ram'] = ($value['ram'] - $lowRam)/($highRam - $lowRam);
+		$cr[$i][$i]=($value['ram']-$lowRam)/($highRam-$lowRam);
 		$normalized[$key][
 		'rom'] = ($value['rom'] - $lowRom)/($highRom - $lowRom);
+		$cro[$i][$i]=($value['rom'] - $lowRom)/($highRom - $lowRom);
 		$i++;
 	}
 	/*Normalized marrix printing*/
@@ -401,9 +403,8 @@
 	//Cosine similarity Formula
 	 	foreach( $matrix as $key => $value ) {
 
-
-
-	 		$cossine[$key] = ($normalized[$c_mobilename]['price'] * $cp[$k][$k] +  $normalized[$c_mobilename]['views'] * $cv[$k][$k])/( sqrt(pow($normalized[$c_mobilename]['price'], 2) + pow($normalized[$c_mobilename]['views'], 2)) * sqrt(pow($cp[$k][$k], 2) + pow($cv[$k][$k], 2)) );
+	 		
+	 		$cossine[$key] = ($normalized[$c_mobilename]['price'] * $cp[$k][$k] +$normalized[$c_mobilename]['ram'] * $cr[$k][$k]+$normalized[$c_mobilename]['rom'] * $cro[$k][$k])/( sqrt(pow($normalized[$c_mobilename]['price'], 2) + pow($normalized[$c_mobilename]['ram'], 2)+pow($normalized[$c_mobilename]['rom'], 2)) * sqrt(pow($cp[$k][$k], 2) +pow($cr[$k][$k], 2)+pow($cro[$k][$k], 2)) );
 
 
 	 		$k++;
