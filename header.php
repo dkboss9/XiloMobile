@@ -1,5 +1,4 @@
 
-
 <!-- Begin of Top Nav Bar -->
 <div class="top-nav-bar">
 	<div class="search-box">
@@ -17,12 +16,12 @@
 		  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 				<ul>
 					<li><a href="home.php"><i class="fa fa-home"></i><br> HOME</a></li>
-					<li><a href="mostviewDisplay.php">Most View</a></li>
-					<li><a href="cart.php"><i class="fa fa-shopping-basket"></i>CART</a></li>
+					<li><a href="mostviewDisplay.php"><i class="fa fa-eye"></i><br>Most View</a></li>
+					<li><a href="cart.php"><i class="fa fa-shopping-basket"></i><br>CART</a></li>
 					<?php 
 						if (empty($_SESSION['username']))
 						{ ?>
-							<li><a href="login.php"> Login</a></li>
+							<li><a href="login.php"><i class="fa fa-key"></i><br> Login</a></li>
 					<?php	} else {
 					 ?>
 					<li class="nav-item dropdown dmenu">
@@ -36,7 +35,7 @@
 				      </div>
 					</li>
 					<?php } ?>	
-					<li><a href="user_recommendation.php"> Recommendation</a></li>
+					<li><a href="user_recommendation.php"><i class="fa fa-users"></i><br>Recommend</a></li>
 				</ul>
 		
 	</div>

@@ -16,7 +16,7 @@
 	$select="select quantity from tbl_cart where cart_id=$c_id";
 	$result=mysqli_query($conn,$select);
 	$data=mysqli_fetch_array($result);
-	echo $data['quantity'];
+	  echo $data['quantity'];
 	}else{
 		echo "1";
 	}

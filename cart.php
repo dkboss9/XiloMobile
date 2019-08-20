@@ -1,5 +1,6 @@
 <?php
 session_start(); 
+$_SESSION['url']=$_SERVER['REQUEST_URI'];
 if(isset($_SESSION['id']))
 $id=$_SESSION['id'];
 else
@@ -58,6 +59,7 @@ $id=null;
         </tr>
       </thead>
       <?php 
+      $i = 1;
       $sum=0;
       $select="select * from tbl_cart where id='$id'";
       $result=mysqli_query($conn,$select);
@@ -66,12 +68,13 @@ $id=null;
          
       ?>
        <tr >
-           <input id="dd_id" type="hidden" name="" value="<?php echo  $data['cart_id']; ?>">
+           <input id="dd_id<?php echo $i;?>" type="hidden" name="" value="<?php echo  $data['cart_id']; ?>">
           <th><?php echo $data['name']?></th>
-          <th><input type="submit" class="minus" value="-">
-          <label id="q"><?php echo $data['quantity']?></label id>
-
-          <input type="submit" class="plus" value="+"></th>
+          <th><form action="cartplus.php?c_id=<?php echo $data['cart_id']; ?>" method="post"><input type="submit" class="minus<?php echo $i; ?>" value="-"></form>
+          <label id="q<?php echo $i; ?>"><?php echo $data['quantity']?></label id>
+          <form action="cartIncrease.php?c_id=<?php echo $data['cart_id']; ?>" method="post">
+          <input type="submit" class="plus" value="+">
+          </form></th>
           <th id="totalPrice"><?php echo $data['totalPrice']?></th>
           <?php  $sum+=$data['totalPrice']; ?>
           <th><a href="cart_remove.php?c_id=<?php echo $data['cart_id']; ?>">
@@ -80,29 +83,25 @@ $id=null;
         </tr>
       
 
-        <?php } ?>
+        <?php 
+            $i++;
+         } ?>
         <tr style="background-color: orange">
           <th colspan="2" style="text-align: center;">TOTAL</th>
           <th><div id="totalPrices"><?php echo $sum?></div></th>
         
-          <th><form action="https://uat.esewa.com.np/epay/main" method="POST">
-    <input value="<?php echo $sum; ?>" name="tAmt" type="hidden">
-    <input value="<?php echo $sum; ?>" name="amt" type="hidden">
-    <input value="0" name="txAmt" type="hidden">
-    <input value="0" name="psc" type="hidden">
-    <input value="0" name="pdc" type="hidden">
-    <input value="epay_payment" name="scd" type="hidden">
-    <input value="ee2c3ca1-696b-4cc5-a6be-2c40d929d453" name="pid" type="hidden">
-    <input value="http://localhost/project/xilomobile/home.php" type="hidden" name="su">
-    <input value="http://merchant.com.np/page/esewa_payment_failed?q=fu" type="hidden" name="fu">
-    <input value="Checkout" type="submit">
-    </form></a></th>
+          <th>
+    <a href="payment.php?total=<?php echo $sum;?>"><input value="Checkout" type="submit">
+    </a></th>
         </tr>
       </table>
 
 
 <script src="js/commentscript.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+
 
 
 
